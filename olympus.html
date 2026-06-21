@@ -37,7 +37,7 @@
   .ostat .l { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#8893BC; }
 
   .osec { padding-block: clamp(56px,8vw,104px); }
-  .oly-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .oly-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
   .gtile { position:relative; border-radius:16px; overflow:hidden; aspect-ratio:4/5; border:1px solid rgba(255,255,255,.08); background:linear-gradient(155deg,#161E40,#0F1530); transition:transform .22s cubic-bezier(.16,.84,.24,1), box-shadow .22s; }
   .gtile:hover { transform:translateY(-5px); box-shadow:0 22px 48px -18px rgba(0,0,0,.75); }
   .gtile__art { position:absolute; inset:0;
@@ -59,7 +59,7 @@
         hover/focus reveals a cross-fading screenshot reel === */
   a.gtile { text-decoration:none; color:inherit; display:block; }
   .gtile--live { cursor:pointer; }
-  .gtile--live:focus-visible { outline:2px solid #F5C754; outline-offset:3px; }
+  .gtile--live:focus-visible { outline:2px solid var(--gc); outline-offset:3px; }
   .gtile__shots { position:absolute; inset:0; z-index:0; opacity:0; transition:opacity .4s ease; pointer-events:none; }
   .gtile--live:hover .gtile__shots,
   .gtile--live:focus-visible .gtile__shots { opacity:1; }
@@ -82,9 +82,12 @@
     background:linear-gradient(180deg, rgba(5,7,15,.62) 0%, rgba(5,7,15,.12) 26%, rgba(5,7,15,.5) 60%, rgba(5,7,15,.92) 100%); }
   /* "Out now" live pill (green = launched, distinct from the gold in-dev flags) */
   .gtile__flag--live { background:rgba(91,227,138,.16); border-color:rgba(91,227,138,.5); color:#9CF5BE; }
+  /* "Coming soon" pill (amber = imminent launch); non-link tile keeps the default cursor */
+  .gtile__flag--soon { background:rgba(245,199,84,.16); border-color:rgba(245,199,84,.5); color:#FFE38A; }
+  .gtile--soon { cursor:default; }
   /* App Store CTA line */
   .gtile__store { margin-top:14px; display:inline-flex; align-items:center; gap:8px;
-    font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:#F5C754; }
+    font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--gc); }
   .gtile__store .arr { transition:transform .18s; }
   .gtile--live:hover .gtile__store .arr, .gtile--live:focus-visible .gtile__store .arr { transform:translateX(4px); }
   /* reduced motion: show the first screenshot statically, no reel cycling */
@@ -120,6 +123,7 @@
   .oghost-btn:hover { border-color:#F6F8FF; background:rgba(255,255,255,.07); }
 
   @media (max-width:860px){ .ostudio { grid-template-columns:1fr; } .ohead__stats { gap:28px; } }
+  @media (max-width:1000px){ .oly-grid { grid-template-columns:repeat(2,1fr); } }
   @media (max-width:720px){ .oly-grid { grid-template-columns:1fr; } }
 </style>
 </head>
@@ -165,14 +169,15 @@
       <div class="wrap ohead__inner">
         <p class="ocrumbs"><a href="index.html">Veratus</a> / <a href="subsidiaries.html">Subsidiaries</a> / Veratus Games</p>
         <img class="ohead__logo" src="assets/olympus-lockup.svg" alt="Veratus Games"/>
-        <h1 class="oly-h1">Three worlds.<br/>One studio.</h1>
+        <h1 class="oly-h1">Four worlds.<br/>One studio.</h1>
         <p class="oly-lede">
-          Veratus Games is Veratus Group's mobile game studio — competitive,
-          lore-rich titles with Greek-mythology DNA, reframed for a modern audience.
-          Three games are in active development for iOS and Android.
+          Veratus Games is Veratus Group's mobile game studio — original,
+          tightly-crafted titles for iOS and Android. Apex Drift is live on the
+          App Store, Eclipse Run is launching next, and two more are in active
+          development.
         </p>
         <div class="ohead__stats">
-          <div class="ostat"><span class="v">03</span><span class="l">Titles in development</span></div>
+          <div class="ostat"><span class="v">04</span><span class="l">Titles</span></div>
           <div class="ostat"><span class="v" style="color:#5EE3FF;">iOS</span><span class="l">+ Android · 2026</span></div>
           <div class="ostat"><span class="v">★</span><span class="l">A Veratus studio</span></div>
         </div>
@@ -240,6 +245,30 @@
                 <div class="gtile__genre">Mind-engaging puzzle</div>
                 <div class="gtile__desc">A clever, minimalist puzzler built around one sharp idea.</div>
                 <div class="gtile__plat"><span>iOS</span><span>Android</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="gtile gtile--live gtile--soon" style="--gc:#8B5CF6;">
+            <div class="gtile__art"></div>
+            <div class="gtile__glyph">E</div>
+            <div class="gtile__shots" aria-hidden="true">
+              <img src="assets/eclipse/eclipse-icon.jpg" alt="" decoding="async"/>
+              <img src="assets/eclipse/eclipse-1.jpg" alt="" loading="lazy" decoding="async"/>
+              <img src="assets/eclipse/eclipse-2.jpg" alt="" loading="lazy" decoding="async"/>
+              <img src="assets/eclipse/eclipse-3.jpg" alt="" loading="lazy" decoding="async"/>
+              <img src="assets/eclipse/eclipse-4.jpg" alt="" loading="lazy" decoding="async"/>
+            </div>
+            <div class="gtile__body">
+              <div class="gtile__top">
+                <span class="gtile__tag">ARCADE</span>
+                <span class="gtile__flag gtile__flag--soon">● Coming soon</span>
+              </div>
+              <div>
+                <div class="gtile__name">Eclipse Run</div>
+                <div class="gtile__genre">One-tap phase-switch runner</div>
+                <div class="gtile__desc">Phase between Light and Shadow — match the colour, chain the combo, outrun the dark.</div>
+                <div class="gtile__plat"><span>iOS</span></div>
+                <span class="gtile__store">Coming to the App Store <span class="arr">→</span></span>
               </div>
             </div>
           </article>
