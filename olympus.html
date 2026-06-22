@@ -85,6 +85,10 @@
   /* "Coming soon" pill (amber = imminent launch); non-link tile keeps the default cursor */
   .gtile__flag--soon { background:rgba(245,199,84,.16); border-color:rgba(245,199,84,.5); color:#FFE38A; }
   .gtile--soon { cursor:default; }
+  /* Single-asset reveal (e.g. just an app icon, no screenshot reel yet):
+     show it statically on hover instead of cycling the apexReel keyframes. */
+  .gtile--single:hover .gtile__shots img,
+  .gtile--single:focus-visible .gtile__shots img { animation:none; opacity:1; }
   /* App Store CTA line */
   .gtile__store { margin-top:14px; display:inline-flex; align-items:center; gap:8px;
     font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--gc); }
@@ -173,8 +177,8 @@
         <p class="oly-lede">
           Veratus Games is Veratus Group's mobile game studio — original,
           tightly-crafted titles for iOS and Android. Apex Drift is live on the
-          App Store, Eclipse Run is launching next, and two more are in active
-          development.
+          App Store, Eclipse Run and Triagles are launching next, and Lost in
+          the Woods is in active development.
         </p>
         <div class="ohead__stats">
           <div class="ostat"><span class="v">04</span><span class="l">Titles</span></div>
@@ -232,13 +236,20 @@
               </div>
             </div>
           </article>
-          <article class="gtile" style="--gc:#5EE3FF;">
+          <article class="gtile gtile--live gtile--soon" style="--gc:#5EE3FF;">
             <div class="gtile__art"></div>
             <div class="gtile__glyph">T</div>
+            <div class="gtile__shots" aria-hidden="true">
+              <img src="assets/triagles/triagles-icon.jpg" alt="" decoding="async"/>
+              <img src="assets/triagles/triagles-1.jpg" alt="" loading="lazy" decoding="async"/>
+              <img src="assets/triagles/triagles-2.jpg" alt="" loading="lazy" decoding="async"/>
+              <img src="assets/triagles/triagles-3.jpg" alt="" loading="lazy" decoding="async"/>
+              <img src="assets/triagles/triagles-4.jpg" alt="" loading="lazy" decoding="async"/>
+            </div>
             <div class="gtile__body">
               <div class="gtile__top">
                 <span class="gtile__tag">PUZZLE</span>
-                <span class="gtile__flag">In development</span>
+                <span class="gtile__flag gtile__flag--soon">● Coming soon</span>
               </div>
               <div>
                 <div class="gtile__name">Triagles</div>
