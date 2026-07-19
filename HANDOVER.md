@@ -1,7 +1,7 @@
 # Veratus Group — site handover
 
 **Domain:** veratusgroup.com
-**Repo:** github.com/zeusiam/Veratus_Group  *(note: underscore)* · branch `main`
+**Repo:** github.com/veratusgroup/Veratus_Group  *(note: underscore)* · branch `main`
 **Stack:** plain static HTML + CSS. No build step, no framework, no server code.
 **Hosting:** shared cPanel (secureserver.net / GoDaddy). Deploy = manual upload of files into `public_html/`. **There is no auto-deploy — pushing to GitHub does not change the live site.**
 
