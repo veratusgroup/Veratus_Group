@@ -2,3 +2,7 @@
 # Wallpaper image sets live on cPanel + the Wallpapers LFS repo, never here
 wallpapers/Exports/
 wallpapers/Previews/
+
+# Separate repos of their own, not part of the websites repo
+Iru Accepts Vuln/
+Iru Accept Risk/
