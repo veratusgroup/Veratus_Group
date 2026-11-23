@@ -1,382 +1,375 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Veratus Group — Software & Games</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link rel="icon" type="image/svg+xml" href="assets/veratus-mark.svg"/>
-<link rel="stylesheet" href="veratus.css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Veratus Group — Boot Sequence</title>
+<meta name="description" content="An independent technology group — four divisions, one standard. Software, games, services, shipped.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
 <style>
-  /* Page-local: hero composition */
-  .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-  .hero__grid {
-    position: absolute; inset: 0; pointer-events: none;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 64px 64px;
-    -webkit-mask-image: radial-gradient(120% 100% at 70% 0%, #000 30%, transparent 78%);
-            mask-image: radial-gradient(120% 100% at 70% 0%, #000 30%, transparent 78%);
-    opacity: .6;
-  }
-  .hero__glow {
-    position: absolute; top: -30%; right: -10%; width: 70vw; height: 70vw;
-    background: radial-gradient(circle, rgba(75,77,242,0.20), transparent 62%);
-    pointer-events: none; filter: blur(10px);
-  }
-  .hero__inner { position: relative; padding-block: clamp(72px, 12vw, 150px); }
-  .hero h1 { margin: 22px 0 0; }
-  .hero h1 .accent { color: var(--accent-bright); }
-  .hero__cta { margin-top: 38px; }
-  .hero__divs {
-    margin-top: 64px; display: grid; grid-template-columns: 1fr 1fr;
-    border: 1px solid var(--line); border-radius: 3px; overflow: hidden;
-  }
-  .hero__div { padding: 26px 28px; display: flex; flex-direction: column; gap: 8px; transition: background .2s; }
-  .hero__div + .hero__div { border-left: 1px solid var(--line); }
-  .hero__div:hover { background: var(--ink-1); }
-  .hero__div .k { font-family: var(--f-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--fg-3); }
-  .hero__div .n { font-family: var(--f-display); font-weight: 800; font-size: clamp(20px,2.4vw,26px); letter-spacing: -.02em; }
-  .hero__div .d { font-size: 14px; color: var(--fg-2); }
-  .hero__div .go { margin-top: 6px; }
-  @media (max-width: 680px){ .hero__divs { grid-template-columns: 1fr; } .hero__div + .hero__div { border-left: 0; border-top: 1px solid var(--line); } }
+/* ===== VERATUS GROUP · BOOT SEQUENCE (geeky / terminal pop) ===== */
+:root{
+  --bg:#F7F7F2; --bg2:#EFEFE8; --ink:#0A0B0D; --ink2:#3A3C42; --mut:#6B6E76; --line:rgba(10,11,13,.12);
+  --indigo:#4B4DF2; --lime:#D4FF3A; --gold:#FFC23D; --term:#0C0D10;
+  --f-disp:'Space Grotesk',system-ui,sans-serif; --f-mono:'JetBrains Mono',ui-monospace,monospace; --f-body:'Inter',system-ui,sans-serif;
+  --r:18px; --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(10,11,13,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(10,11,13,.035) 1px,transparent 1px);
+  background-size:34px 34px;mask:radial-gradient(120% 90% at 50% 0%,#000 55%,transparent 100%)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(18px,4vw,42px)}
+.mono{font-family:var(--f-mono)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-mono);font-weight:700;font-size:14px;padding:13px 20px;border-radius:12px;border:2px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--indigo)}
+.btn.lime{background:var(--lime);color:var(--ink);border-color:var(--ink)}
+.btn.lime:hover{box-shadow:5px 5px 0 var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{box-shadow:5px 5px 0 var(--gold)}
+.btn.sm{padding:10px 15px;font-size:13px;border-radius:10px}
+.btn.off{opacity:.45;border-style:dashed;background:transparent;color:var(--ink);cursor:not-allowed}
+.btn.off:hover{transform:none;box-shadow:none}
 
-  /* Ticker */
-  .ticker { border-block: 1px solid var(--line); background: var(--ink-1); overflow: hidden; }
-  .ticker__track { display: flex; gap: 0; white-space: nowrap; animation: ticker 32s linear infinite; }
-  .ticker span {
-    font-family: var(--f-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--fg-2); padding: 16px 28px; display: inline-flex; align-items: center; gap: 28px;
-  }
-  .ticker span::after { content: "◆"; color: var(--accent-bright); font-size: 9px; }
-  @keyframes ticker { to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce){ .ticker__track { animation: none; } }
+/* nav */
+nav.bar{position:sticky;top:0;z-index:60;background:rgba(247,247,242,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-weight:700;font-size:15px}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(212,255,58,.3);animation:blink 1.4s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+.nav-links{display:flex;gap:6px;align-items:center;font-family:var(--f-mono);font-size:13px}
+.nav-links a{padding:9px 13px;border-radius:9px;color:var(--ink2)}
+.nav-links a:hover{background:var(--bg2);color:var(--ink)}
+@media(max-width:820px){.nav-links a:not(.cta){display:none}}
 
-  /* Divisions feature blocks */
-  .divs { display: grid; gap: 0; }
-  .divblock {
-    display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px,5vw,72px);
-    align-items: center; padding-block: clamp(48px,7vw,84px);
-  }
-  .divblock + .divblock { border-top: 1px solid var(--paper-line); }
-  .divblock__shot { aspect-ratio: 4 / 3; }
-  .divblock--rev .divblock__media { order: -1; }
-  .divblock h3 { margin: 16px 0 0; }
-  @media (max-width: 820px){
-    .divblock { grid-template-columns: 1fr; }
-    .divblock--rev .divblock__media { order: 0; }
-  }
+/* hero */
+.hero{padding:clamp(40px,6vw,80px) 0 clamp(24px,4vw,48px)}
+.hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,52px);align-items:center}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr}}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--indigo);border:1px solid rgba(75,77,242,.4);background:rgba(75,77,242,.08);padding:6px 12px;border-radius:999px}
+h1{font-family:var(--f-disp);font-size:clamp(44px,6.4vw,82px);line-height:.95;letter-spacing:-.035em;font-weight:700;margin:18px 0 0}
+h1 .fill{background:linear-gradient(100deg,var(--indigo),#7378FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lede{color:var(--ink2);font-size:clamp(16px,1.7vw,19px);max-width:42ch;margin:18px 0 0}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.stat{font-family:var(--f-mono);border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#fff}
+.stat b{display:block;font-size:26px;font-weight:700;letter-spacing:-.02em}
+.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em}
 
-  /* Games strip */
-  .games { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
-  .game { background: var(--ink); padding: 22px; display: flex; flex-direction: column; gap: 14px; transition: background .2s; }
-  .game:hover { background: var(--ink-1); }
-  .game__shot { aspect-ratio: 16 / 11; }
-  .game__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-  @media (max-width: 760px){ .games { grid-template-columns: 1fr; } }
+/* terminal */
+.term{background:var(--term);border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -36px rgba(10,11,13,.5);border:1px solid #23252c}
+.term-top{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#15171c;border-bottom:1px solid #23252c}
+.term-top i{width:11px;height:11px;border-radius:50%}
+.term-top i:nth-child(1){background:#FF5F56}.term-top i:nth-child(2){background:#FFBD2E}.term-top i:nth-child(3){background:#27C93F}
+.term-top span{margin-left:8px;font-family:var(--f-mono);font-size:12px;color:#6b7078}
+.term-body{padding:18px 18px 22px;font-family:var(--f-mono);font-size:13.5px;line-height:1.75;color:#C7F6C0;min-height:300px}
+.term-body .l{display:block;white-space:pre-wrap}
+.term-body .c{color:#7378FF}.term-body .ok{color:#9DFF9A}.term-body .g{color:var(--gold)}.term-body .d{color:#6b7078}
+.term-body .alt{color:var(--lime);font-weight:700}
+.cursor{display:inline-block;width:9px;height:17px;background:var(--lime);vertical-align:-3px;animation:blink 1s steps(2) infinite}
 
-  /* CTA band */
-  .ctaband { position: relative; overflow: hidden; border-top: 1px solid var(--line); }
-  .ctaband__glow { position: absolute; inset: 0; background: radial-gradient(60% 120% at 50% 120%, rgba(75,77,242,0.22), transparent 70%); pointer-events: none; }
-  .ctaband__inner { position: relative; text-align: center; padding-block: clamp(64px,9vw,120px); display: flex; flex-direction: column; align-items: center; gap: 26px; }
+/* section scaffolding */
+section{padding:clamp(48px,7vw,92px) 0}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sh h2{font-family:var(--f-disp);font-size:clamp(26px,3.6vw,44px);letter-spacing:-.03em;margin:0;font-weight:700}
+.sh .tag{font-family:var(--f-mono);font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.1em}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+html:not(.js) .reveal{opacity:1;transform:none}
 
-  /* Games pointer band → Veratus Games page */
-  .devband { display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;
-    border:1px solid var(--paper-line); border-radius:4px; padding:clamp(26px,4vw,48px); background:var(--paper);
-    transition:background .2s, border-color .2s, transform .2s; }
-  .devband:hover { background:#E9E9E1; border-color:rgba(10,11,13,.22); }
-  .devband__go { font-family:var(--f-display); font-weight:700; font-size:15px; letter-spacing:.01em;
-    display:inline-flex; align-items:center; gap:10px; color:var(--accent); white-space:nowrap; }
-  .devband__go .arr { transition:transform .18s; }
-  .devband:hover .devband__go .arr { transform:translateX(5px); }
+/* === DIVISIONS · app slideshow === */
+.slideshow{margin-top:28px;position:relative;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;background:#fff}
+.slides{position:relative;min-height:380px}
+.slide{position:absolute;inset:0;display:grid;grid-template-columns:1.1fr .9fr;opacity:0;visibility:hidden;transition:opacity .5s}
+.slide.on{opacity:1;visibility:visible;position:relative}
+@media(max-width:760px){.slide,.slide.on{grid-template-columns:1fr}}
+.slide .media{background:var(--term);overflow:hidden;min-height:220px}
+.slide .media img{width:100%;height:100%;object-fit:cover;object-position:left top}
+.slide .media.center img{object-position:center}
+.slide .copy{padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;justify-content:center;gap:10px}
+.slide .copy .tag{font-family:var(--f-mono);font-size:12px;color:var(--indigo);text-transform:uppercase;letter-spacing:.08em}
+.slide .copy h3{font-family:var(--f-disp);font-size:clamp(26px,3.4vw,40px);margin:0;letter-spacing:-.02em}
+.slide .copy p{color:var(--ink2);font-size:16px;margin:0;max-width:40ch}
+.slide .copy a.go{font-family:var(--f-mono);font-weight:700;font-size:14px;color:var(--indigo);margin-top:6px}
+.ss-ctrl{position:absolute;bottom:16px;right:18px;display:flex;gap:8px;z-index:3}
+.ss-ctrl button{width:40px;height:40px;border-radius:10px;border:2px solid var(--ink);background:#fff;cursor:pointer;font-size:16px;font-family:var(--f-mono);transition:background .15s}
+.ss-ctrl button:hover{background:var(--lime)}
+.ss-dots{position:absolute;bottom:22px;left:22px;display:flex;gap:7px;z-index:3}
+.ss-dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(10,11,13,.25);cursor:pointer;padding:0}
+.ss-dots button.on{background:var(--indigo);width:26px;border-radius:999px}
+
+/* ALTERNATE acrostic */
+.alt-wrap{margin-top:30px;background:var(--term);border-radius:24px;padding:clamp(22px,4vw,44px);color:#fff;position:relative;overflow:hidden}
+.alt-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.alt-head h3{font-family:var(--f-disp);font-size:clamp(22px,3vw,34px);margin:0;letter-spacing:-.02em}
+.alt-head .sub{font-family:var(--f-mono);font-size:12px;color:#8b90a0}
+.alt-word{display:flex;gap:clamp(4px,1vw,12px);flex-wrap:wrap;margin:18px 0 0}
+.alt-l{flex:1 1 60px;min-width:56px;aspect-ratio:3/4;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#15171c;display:flex;align-items:center;justify-content:center;font-family:var(--f-disp);font-size:clamp(28px,4vw,52px);font-weight:700;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.alt-l .ltr{position:relative;z-index:2;transition:opacity .2s}
+.alt-l img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .25s,transform .4s;z-index:1}
+.alt-l:hover{transform:translateY(-6px)}
+.alt-l:hover img{opacity:.95;transform:scale(1)}
+.alt-l:hover .ltr{opacity:0}
+.alt-l::after{content:"";position:absolute;inset:0;z-index:3;box-shadow:inset 0 0 0 2px var(--a,transparent);border-radius:14px;opacity:0;transition:opacity .2s}
+.alt-l:hover::after{opacity:1}
+.alt-panel{margin-top:18px;display:flex;align-items:center;gap:16px;min-height:50px;font-family:var(--f-mono);flex-wrap:wrap}
+.alt-panel .num{font-size:12px;color:#8b90a0}
+.alt-panel .nm{font-family:var(--f-disp);font-size:22px;font-weight:700}
+.alt-panel .ln{color:#b7bccb;font-size:14px}
+.alt-panel a{margin-left:auto;font-size:13px;font-weight:700;color:var(--ink);background:var(--lime);padding:9px 15px;border-radius:10px}
+
+/* === SEE IN MOTION · per-game iPhone previews === */
+.motion{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,52px);align-items:center;margin-top:30px}
+@media(max-width:860px){.motion{grid-template-columns:1fr}}
+.phone{justify-self:center;width:min(290px,80vw);aspect-ratio:9/19.5;background:#000;border-radius:42px;padding:9px;box-shadow:0 40px 80px -40px rgba(10,11,13,.6);border:1px solid #2a2a30;position:relative;transition:transform .7s cubic-bezier(.34,1.12,.28,1);transform-origin:center center}
+.phone.land{transform:rotate(90deg) scale(.6)}
+.phone.land .screen img,.phone.land .screen video{inset:auto;left:50%;top:50%;width:606px;height:272px;transform:translate(-50%,-50%) rotate(-90deg)}
+.phone::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);width:84px;height:22px;background:#000;border-radius:999px;z-index:3}
+.phone .screen{width:100%;height:100%;border-radius:34px;overflow:hidden;background:#111;position:relative}
+.phone .screen img,.phone .screen video{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;opacity:0;transition:opacity .35s}
+.phone .screen img.on,.phone .screen video.on{opacity:1}
+.motion .panel .tag{font-family:var(--f-mono);font-size:12px;color:var(--indigo);text-transform:uppercase;letter-spacing:.08em}
+.motion .panel h3{font-family:var(--f-disp);font-size:clamp(30px,4vw,52px);letter-spacing:-.03em;margin:8px 0 0;line-height:1}
+.motion .panel .slogan{color:var(--ink2);font-size:18px;margin:12px 0 0}
+.motion .panel .get{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:20px}
+.motion .panel .get a.badge{display:block;transition:transform .15s}
+.motion .panel .get a.badge img{height:52px;width:auto;display:block;border-radius:12px}
+.motion .panel .get a.badge:hover{transform:translateY(-2px)}
+.motion .panel .get .soon{font-family:var(--f-mono);font-size:12px;color:var(--mut);border:1px dashed var(--line);border-radius:12px;padding:0 16px;height:52px;display:inline-flex;align-items:center}
+.islider{display:flex;gap:10px;overflow-x:auto;padding:14px 2px 6px;margin-top:22px;scroll-snap-type:x mandatory;-webkit-mask:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.islider::-webkit-scrollbar{height:0}
+.ic{flex:0 0 auto;width:66px;height:66px;border-radius:21px;overflow:hidden;border:2px solid transparent;background:#fff;cursor:pointer;scroll-snap-align:center;transition:transform .15s,border-color .15s;box-shadow:0 2px 8px rgba(10,11,13,.1)}
+.ic img{width:100%;height:100%;object-fit:cover;display:block;border-radius:19px}
+.ic:hover{transform:translateY(-3px)}
+.ic.on{border-color:var(--indigo);transform:translateY(-4px);box-shadow:0 8px 18px -6px var(--indigo)}
+
+/* CTA band */
+.band{background:var(--indigo);color:#fff;border-radius:26px;padding:clamp(32px,5vw,60px);display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
+@media(max-width:760px){.band{grid-template-columns:1fr}}
+.band h2{font-family:var(--f-disp);font-size:clamp(30px,4.6vw,56px);line-height:.98;letter-spacing:-.03em;margin:0}
+.band h2 span{color:var(--lime)}
+.band .r{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.band .btn{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.band .btn:hover{box-shadow:5px 5px 0 rgba(0,0,0,.3)}
+.band .btn.o{background:transparent;color:#fff;border-color:#fff}
+
+footer{border-top:1px solid var(--line);padding:40px 0 56px;font-family:var(--f-mono);font-size:13px;color:var(--mut)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+footer a:hover{color:var(--ink)}
+.switcher{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:90;background:var(--ink);color:#fff;font-family:var(--f-mono);font-size:12px;border-radius:999px;padding:7px 8px;display:flex;gap:4px;box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+.switcher a{padding:6px 11px;border-radius:999px;color:#b7bccb}
+.switcher a.on{background:var(--lime);color:var(--ink);font-weight:700}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.cursor{animation:none}}
 </style>
 </head>
-<body data-screen-label="01 Home">
+<body>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="nav__inner">
-      <a class="brand" href="index.html" aria-label="Veratus Group home">
-        <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <rect x="6" y="38" width="17" height="17" rx="3.5" fill="#3A3CE0"></rect><rect x="40.5" y="9" width="17" height="17" rx="3.5" fill="#7378FF"></rect>
-          <rect x="23" y="23.5" width="17" height="17" rx="3.5" fill="#4B4DF2"></rect>
-        </svg>
-        <span class="brand__name">VERATUS<b>.</b></span>
-      </a>
-      <nav class="nav__links" aria-label="Primary">
-        <a class="nav__link" href="index.html" aria-current="page">Home</a>
-        <a class="nav__link" href="subsidiaries.html">Subsidiaries</a>
-        <a class="nav__link" href="about.html">About</a>
-        <a class="nav__link" href="https://veratusconsulting.com" target="_blank" rel="noopener">Build with us ↗</a>
-        <a class="nav__link nav__link--keep" href="contact.html">Contact</a>
-        <a class="nav__link nav__link--keep" href="wallpapers/">Wallpapers</a>
-        <a class="btn btn--ghost nav__cta" href="subsidiaries.html">Our work <span class="arr">→</span></a>
-      </nav>
-    </div>
-  </header>
+<nav class="bar"><div class="wrap">
+  <a class="brand" href="#top"><span class="dot"></span>veratus<span style="color:var(--mut)">:~$</span></a>
+  <div class="nav-links">
+    <a href="#divisions">./divisions</a>
+    <a href="#alternate">./games</a>
+    <a href="#motion">./play</a>
+    <a class="btn lime cta" href="#build" style="padding:9px 15px">Start a build</a>
+  </div>
+</div></nav>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero__grid"></div>
-      <div class="hero__glow"></div>
-      <div class="wrap hero__inner">
-        <p class="eyebrow"><span class="idx">◆</span> Technology Group · veratusgroup.com</p>
-        <h1 class="display d-xxl">
-          We build <span class="accent">software</span><br/>and <span class="accent">games</span>.
-        </h1>
-        <p class="lede" style="margin-top:28px;">
-          Veratus Group is an independent technology company. We design and ship
-          products across four divisions — productivity software for macOS,
-          original mobile games, a build-and-ship service, and our own consumer
-          apps — under one roof.
-        </p>
-        <div class="row hero__cta">
-          <a class="btn btn--accent" href="subsidiaries.html">Explore our work <span class="arr">→</span></a>
-          <a class="btn btn--ghost" href="about.html">About the group</a>
-        </div>
-
-        <div class="hero__divs">
-          <a class="hero__div" href="subsidiaries.html#filecura">
-            <span class="k">Division 01 · Software</span>
-            <span class="n">FileCura</span>
-            <span class="d">A local-first workflow platform for Mac.</span>
-            <span class="go link-arrow">View <span class="arr">→</span></span>
-          </a>
-          <a class="hero__div" href="olympus.html">
-            <span class="k">Division 02 · Games</span>
-            <span class="n">Veratus Games</span>
-            <span class="d">Mobile game studio. Eleven titles — ten out now.</span>
-            <span class="go link-arrow">View <span class="arr">→</span></span>
-          </a>
-          <a class="hero__div" href="https://veratusconsulting.com" target="_blank" rel="noopener">
-            <span class="k">Division 03 · Services</span>
-            <span class="n">Veratus Consulting</span>
-            <span class="d">We build your app or game, end to end.</span>
-            <span class="go link-arrow">Build with us <span class="arr">↗</span></span>
-          </a>
-          <a class="hero__div" href="https://reflowroom.com" target="_blank" rel="noopener">
-            <span class="k">Division 04 · Apps</span>
-            <span class="n">Reflow</span>
-            <span class="d">Rearrange the room you already have. Out now on iOS.</span>
-            <span class="go link-arrow">View <span class="arr">↗</span></span>
-          </a>
-        </div>
+<main id="top">
+<header class="hero"><div class="wrap">
+  <div class="grid">
+    <div>
+      <span class="kicker">● veratus group · est. england &amp; wales</span>
+      <h1>Software. Games.<br><span class="fill">Shipped.</span></h1>
+      <p class="lede">An independent technology group — four divisions, one standard. We build the things we'd want to use.</p>
+      <div class="cta">
+        <a class="btn lime" href="#divisions">Explore the group ↓</a>
+        <a class="btn ghost" href="#alternate">See the games</a>
       </div>
-    </section>
-
-    <!-- TICKER -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        <span>Software</span><span>Games</span><span>macOS</span><span>iOS</span><span>Android</span><span>Independent</span>
-        <span>Software</span><span>Games</span><span>macOS</span><span>iOS</span><span>Android</span><span>Independent</span>
+      <div class="stats">
+        <div class="stat"><b>04</b><span>Divisions</span></div>
+        <div class="stat"><b>11</b><span>Titles</span></div>
+        <div class="stat"><b>10</b><span>Live now</span></div>
       </div>
     </div>
-
-    <!-- WHAT WE DO (paper) -->
-    <section class="section on-paper" data-screen-label="What we do">
-      <div class="wrap">
-        <div class="fade-up" style="display:grid; grid-template-columns: 0.9fr 1.4fr; gap: clamp(28px,5vw,72px); align-items:start;">
-          <div>
-            <p class="eyebrow"><span class="idx">01</span> What we do</p>
-          </div>
-          <div class="stack">
-            <h2 class="display d-lg">One group. Two disciplines. A bias toward shipping.</h2>
-            <p class="body-lg">
-              We're a small team that builds focused products and sees them through —
-              from the first prototype to the App Store and Mac. Software and games
-              are different crafts, but they share the same standard: fast, considered,
-              and made to be used every day.
-            </p>
-            <div class="row" style="margin-top:8px; gap:32px;">
-              <div class="stack-sm">
-                <div class="display d-md">04</div>
-                <div class="mono" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-paper-3)">Divisions</div>
-              </div>
-              <div class="stack-sm">
-                <div class="display d-md">01</div>
-                <div class="mono" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-paper-3)">macOS app</div>
-              </div>
-              <div class="stack-sm">
-                <div class="display d-md">11</div>
-                <div class="mono" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-paper-3)">Mobile titles</div>
-              </div>
-              <div class="stack-sm">
-                <div class="display d-md">01</div>
-                <div class="mono" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-paper-3)">iOS app</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIVISIONS -->
-    <section class="section" data-screen-label="Divisions">
-      <div class="wrap">
-        <div class="row" style="justify-content:space-between; align-items:flex-end; margin-bottom:8px;">
-          <p class="eyebrow"><span class="idx">02</span> Divisions</p>
-          <a class="link-arrow" href="subsidiaries.html">All subsidiaries <span class="arr">→</span></a>
-        </div>
-        <div class="rule" style="margin-bottom:12px;"></div>
-
-        <div class="divs">
-          <!-- FileCura -->
-          <article class="divblock fade-up" id="filecura">
-            <div class="stack" style="align-items:center; text-align:center;">
-              <span class="tag tag--dot">Software · macOS</span>
-              <span class="fc-logo"><img src="assets/filecura-wordmark.png" alt="FileCura — local-first workflow platform for Mac"/></span>
-              <p class="body-lg" style="color:var(--fg-2); margin-inline:auto;">
-                A local-first workflow platform for Mac. Turn Finder into a
-                workflow engine — automate file organisation, project setup,
-                metadata edits, and bulk transfers, all locally on your Mac.
-              </p>
-              <div class="row" style="margin-top:6px; justify-content:center;">
-                <a class="btn btn--filecura" href="subsidiaries.html#filecura">Learn more <span class="arr">→</span></a>
-                <a class="link-arrow muted" href="https://filecura.com" target="_blank" rel="noopener">filecura.com <span class="arr">↗</span></a>
-              </div>
-            </div>
-            <div class="divblock__media">
-              <div class="fc-slides" data-fc-slides>
-                <img src="assets/fc/fc-1.png" alt="FileCura — Dashboard"/>
-                <img src="assets/fc/fc-2.png" alt="FileCura — Quick Actions"/>
-                <img src="assets/fc/fc-3.png" alt="FileCura — Automation Packs"/>
-                <img src="assets/fc/fc-4.png" alt="FileCura — Settings"/>
-                <img src="assets/fc/fc-5.png" alt="FileCura — Git Full Run"/>
-                <img src="assets/fc/fc-6.png" alt="FileCura — Archive Handler"/>
-              </div>
-              <div class="fc-dots" data-fc-dots></div>
-            </div>
-          </article>
-
-          <!-- Veratus Games -->
-          <article class="divblock divblock--rev fade-up" id="olympus">
-            <div class="stack">
-              <span class="tag tag--dot" style="color:var(--accent-bright);border-color:var(--accent-line)">Games · Mobile studio</span>
-              <h3 class="display d-lg">Veratus Games</h3>
-              <p class="body-lg" style="color:var(--fg-2)">
-                Our mobile game studio. Veratus Games builds original, tightly-crafted titles
-                for iOS and Android — Apex Drift, Lost in the Woods, Triagles, Eclipse Run, Rune Rogue, Nibwell, Anagrail, Tott, Echo: Descend, and TidePost are live on the App Store.
-              </p>
-              <div class="row" style="margin-top:6px;">
-                <a class="btn btn--olympus" href="olympus.html">Visit Veratus Games <span class="arr">→</span></a>
-              </div>
-            </div>
-            <a class="divblock__media ticks" href="olympus.html" aria-label="Veratus Games" style="display:flex;align-items:center;justify-content:center;padding:20px;aspect-ratio:4/3;background:radial-gradient(62% 64% at 50% 34%,rgba(44,58,115,.55),transparent 70%),linear-gradient(160deg,#10193A,#070A16);border:1px solid rgba(245,199,84,.22);border-radius:3px;overflow:hidden;transition:transform .2s,border-color .2s;">
-              <img src="assets/olympus-lockup.svg" alt="Veratus Games" style="width:90%;max-width:480px;"/>
-            </a>
-          </article>
-
-          <!-- Reflow -->
-          <article class="divblock fade-up" id="reflow">
-            <div class="stack">
-              <span class="tag tag--dot" style="color:#3BA7B0;border-color:rgba(12,110,119,.42)">Apps · iOS · Out now · Android soon</span>
-              <h3 class="display d-lg">Reflow</h3>
-              <p class="body-lg" style="color:var(--fg-2)">
-                Our first consumer app. Photograph a room, pick how you want it to feel,
-                and Reflow gives you a plain-English move list for the furniture you already
-                own — plus an interactive 3D floor plan. Out now on the App Store for
-                iPhone and iPad. Android coming soon.
-              </p>
-              <div class="row" style="margin-top:12px; align-items:center; gap:18px;">
-                <a class="badge-link" href="https://apps.apple.com/us/app/reflow-room-layout/id6808770003" target="_blank" rel="noopener" aria-label="Download Reflow: Room Layout on the App Store"><img src="assets/badges/app-store-badge.svg" alt="Download on the App Store"/></a>
-                <a class="link-arrow muted" href="https://reflowroom.com" target="_blank" rel="noopener">reflowroom.com <span class="arr">↗</span></a>
-              </div>
-            </div>
-            <a class="divblock__media" href="https://reflowroom.com" target="_blank" rel="noopener" aria-label="Reflow" style="display:flex;align-items:center;justify-content:center;padding:26px;aspect-ratio:4/3;background:radial-gradient(60% 62% at 50% 30%,rgba(12,110,119,.34),transparent 70%),linear-gradient(160deg,#0E3B40,#07171A);border:1px solid rgba(12,110,119,.30);border-radius:3px;overflow:hidden;transition:transform .2s,border-color .2s;">
-              <img src="assets/reflow/reflow-movelist.png" alt="Reflow — move list for the furniture you already own" style="height:100%;max-height:380px;width:auto;border-radius:20px;box-shadow:0 26px 60px -26px rgba(0,0,0,.75);"/>
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- THE GAMES → VERATUS GAMES PAGE -->
-    <section class="section on-paper" data-screen-label="The games">
-      <div class="wrap">
-        <a class="devband fade-up" href="olympus.html">
-          <div class="stack-sm">
-            <p class="eyebrow"><span class="idx">03</span> The games</p>
-            <h2 class="display d-lg" style="margin-top:10px;">Our games are made at Veratus Games.</h2>
-            <p class="body-lg" style="max-width:48ch; margin-top:6px;">Veratus Games is our mobile studio — Apex Drift, Lost in the Woods, Triagles, Eclipse Run, Rune Rogue, Nibwell, Anagrail, Tott, Echo: Descend, and TidePost are all live on the App Store. See the studio and its full lineup.</p>
-          </div>
-          <span class="devband__go">Visit Veratus Games <span class="arr">→</span></span>
-        </a>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="ctaband on-ink" data-screen-label="CTA">
-      <div class="ctaband__glow"></div>
-      <div class="wrap ctaband__inner">
-        <p class="eyebrow eyebrow--accent">Veratus Group</p>
-        <h2 class="display d-xl" style="max-width:18ch;">Building the next things we'll use every day.</h2>
-        <div class="row" style="justify-content:center;">
-          <a class="btn btn--accent" href="subsidiaries.html">Explore our work <span class="arr">→</span></a>
-          <a class="btn btn--ghost" href="contact.html">Get in touch</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="foot">
-    <div class="foot__top">
-      <div class="foot__col">
-        <a class="brand" href="index.html" style="margin-bottom:18px;">
-          <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <rect x="6" y="38" width="17" height="17" rx="3.5" fill="#3A3CE0"></rect><rect x="40.5" y="9" width="17" height="17" rx="3.5" fill="#7378FF"></rect>
-            <rect x="23" y="23.5" width="17" height="17" rx="3.5" fill="#4B4DF2"></rect>
-          </svg>
-          <span class="brand__name">VERATUS<b>.</b></span>
-        </a>
-        <p class="body" style="max-width:34ch;">An independent technology group building software and games.</p>
-        <p class="body muted" style="max-width:34ch; margin-top:10px; font-size:12.5px; line-height:1.5;">Veratus Group Limited · Registered in England and Wales · Company no. 17258282</p>
-      </div>
-      <div class="foot__col">
-        <h4>Company</h4>
-        <a href="index.html">Home</a>
-        <a href="subsidiaries.html">Subsidiaries</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="foot__col">
-        <h4>Divisions</h4>
-        <a href="https://filecura.com" target="_blank" rel="noopener">FileCura ↗</a>
-        <a href="https://veratusgames.com" target="_blank" rel="noopener">Veratus Games ↗</a>
-        <a href="https://veratusconsulting.com" target="_blank" rel="noopener">Veratus Consulting ↗</a>
-        <a href="https://reflowroom.com" target="_blank" rel="noopener">Reflow ↗</a>
-      </div>
+    <div class="term" aria-hidden="true">
+      <div class="term-top"><i></i><i></i><i></i><span>veratus — boot</span></div>
+      <div class="term-body" id="term"></div>
     </div>
-    <div class="foot__bottom">
-      <span>© 2026 Veratus Group</span>
-      <span>veratusgroup.com</span>
-    </div>
-  </footer>
+  </div>
+</div></header>
 
-  <script>
-    (function(){
-      var io = new IntersectionObserver(function(es){
-        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
-      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-      document.querySelectorAll('.fade-up').forEach(function(el,i){ el.style.setProperty('--_d', (i*60)+'ms'); io.observe(el); });
-    })();
-  </script>
-  <script data-vg-reveal>
-  (function(){
-    var sels = ['.hero__inner','.pagehead__inner','.ohead__inner','.ctaband__inner','.octa > .wrap','.section > .wrap','.osec > .wrap'];
-    var add = [];
-    sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){
-      if(el.classList.contains('fade-up')) return;
-      if(el.querySelector('.fade-up')) return;
-      el.classList.add('fade-up'); add.push(el);
-    }); });
-    if(!('IntersectionObserver' in window)){ add.forEach(function(el){ el.classList.add('in'); }); return; }
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.06, rootMargin: '0px 0px -4% 0px' });
-    add.forEach(function(el){ io.observe(el); });
-  })();
-  </script>
-  <script src="fc-slideshow.js"></script>
+<section id="divisions"><div class="wrap">
+  <div class="sh reveal"><h2>Four divisions.</h2><span class="tag">// one standard</span></div>
+  <div class="slideshow reveal">
+    <div class="slides" id="slides"></div>
+    <div class="ss-dots" id="ssDots"></div>
+    <div class="ss-ctrl"><button id="ssPrev" aria-label="Previous">‹</button><button id="ssNext" aria-label="Next">›</button></div>
+  </div>
+</div></section>
+
+<section id="alternate"><div class="wrap">
+  <div class="sh reveal"><h2>The word is the collection.</h2><span class="tag">// hover a letter</span></div>
+  <div class="alt-wrap reveal">
+    <div class="alt-head"><h3>A·L·T·E·R·N·A·T·E</h3><span class="sub mono">one word — nine worlds</span></div>
+    <div class="alt-word" id="altWord" role="list" aria-label="ALTERNATE: nine Veratus Games titles"></div>
+    <div class="alt-panel" id="altPanel"></div>
+  </div>
+</div></section>
+
+<section id="motion"><div class="wrap">
+  <div class="sh reveal"><h2>See them in motion.</h2><span class="tag">// pick a game</span></div>
+  <div class="motion">
+    <div class="phone reveal"><div class="screen" id="screen"></div></div>
+    <div class="panel reveal">
+      <span class="tag" id="mTag">Veratus Games · iOS</span>
+      <h3 id="mName">Apex Drift</h3>
+      <p class="slogan" id="mSlogan">Own the chaos.</p>
+      <div class="get" id="mGet"></div>
+      <div class="islider" id="islider" role="tablist" aria-label="Choose a game"></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="build"><div class="wrap">
+  <div class="band reveal">
+    <h2>Have an idea?<br><span>We'll build it.</span></h2>
+    <div class="r"><a class="btn" href="https://veratusconsulting.com">Book a Blueprint →</a><a class="btn o" href="mailto:hello@veratusgroup.com">hello@veratusgroup.com</a></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Veratus Group Limited · No. 17258282</span>
+  <span>FileCura · Veratus Games · Veratus Consulting · Reflow</span>
+</div></footer>
+
+
+
+<script>
+document.documentElement.classList.add('js');
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- shared game data ---- */
+var GAMES=[
+  {L:'A',id:'apex',name:'Apex Drift',line:'Own the chaos.',a:'#F5C754',ios:'https://apps.apple.com/app/id6777362579',android:'https://play.google.com/store/apps/details?id=com.olympusgames.apexdrift',video:'assets-v2/video/apex-ad.mp4'},
+  {L:'L',id:'lost',name:'Lost in the Woods',line:'Keep your light alive.',a:'#A78BFA',ios:'https://apps.apple.com/app/id6786471951',android:null},
+  {L:'T',id:'triagles',name:'Triagles',line:'Find your winning angle.',a:'#4B4DF2',ios:'https://apps.apple.com/app/id6783455265',android:'https://play.google.com/store/apps/details?id=com.veratusgroup.triagles'},
+  {L:'E',id:'eclipse',name:'Eclipse Run',line:'One tap. Total focus.',a:'#38BDF8',ios:'https://apps.apple.com/app/id6782432091',android:'https://play.google.com/store/apps/details?id=com.veratusgames.eclipserun'},
+  {L:'R',id:'rune',name:'Rune Rogue',line:"It looks familiar. It isn't.",a:'#F5C754',ios:'https://apps.apple.com/app/id6793398520',android:'https://play.google.com/store/apps/details?id=com.veratusgames.runerogue'},
+  {L:'N',id:'nibwell',name:'Nibwell',line:'Contain the outbreak.',a:'#9EA2DC',ios:'https://apps.apple.com/app/id6784772164',android:null},
+  {L:'A',id:'anagrail',name:'Anagrail',line:'Rare words beat long ones.',a:'#E5564C',ios:'https://apps.apple.com/app/id6811488558',android:'https://play.google.com/store/apps/details?id=com.veratusgames.anagrail'},
+  {L:'T',id:'tott',name:'tott.',line:'Hit it. Exactly.',a:'#D4FF3A',ios:'https://veratusgames.com/games.html#tott',android:'https://play.google.com/store/apps/dev?id=4880888774838915892'},
+  {L:'E',id:'echo',name:'Echo: Descend',line:'Seeing costs you.',a:'#7FE9FF',ios:'https://apps.apple.com/app/id6810128944',android:'https://play.google.com/store/apps/details?id=com.veratusgames.EchoGame'}
+];
+var DIVS=[
+  {tag:'FileCura · macOS',name:'Finder, but it works for you.',line:'The Mac file app that does things with your files, not just shows them.',link:'filecura.com',url:'https://filecura.com',img:'assets-v2/filecura/fc-1.png',center:false},
+  {tag:'Veratus Games · iOS',name:'Nine worlds. One word.',line:'Original mobile games, built native — a lineup that spells ALTERNATE.',link:'veratusgames.com',url:'https://veratusgames.com',img:'assets-v2/posters/apex.jpg',center:true},
+  {tag:'Reflow · iPhone & iPad',name:'Rearrange the room you already have.',line:'Scan a space, move the furniture, see it before you lift a thing.',link:'reflowroom.com',url:'https://reflowroom.com',img:'assets-v2/reflow/reflow-3d.png',center:true},
+  {tag:'Veratus Consulting · services',name:'Your app or game, built end to end.',line:'Every engagement starts with a paid Blueprint — scope, de-risk, then ship.',link:'veratusconsulting.com',url:'https://veratusconsulting.com',graphic:true,center:true}
+];
+
+/* ---- boot sequence ---- */
+(function(){
+  var el=document.getElementById('term'); if(!el) return;
+  var lines=[
+    '<span class="l d">$ veratus --boot</span>',
+    '<span class="l">initialising <span class="c">veratus group</span>…</span>',
+    '<span class="l ok">[ok]</span> filecura        · macOS file engine',
+    '<span class="l ok">[ok]</span> veratus games   · 10 titles live',
+    '<span class="l ok">[ok]</span> veratus consult · build end-to-end',
+    '<span class="l ok">[ok]</span> reflow          · spatial app',
+    '<span class="l d">$ games --spell</span>',
+    '<span class="l alt">A L T E R N A T E</span>',
+    '<span class="l g">▸ nine worlds. one word.</span>',
+    '<span class="l d">$ ready_</span>'
+  ];
+  if(reduce){ el.innerHTML=lines.join('')+'<span class="cursor"></span>'; return; }
+  var i=0;
+  function next(){
+    if(i>=lines.length){ el.insertAdjacentHTML('beforeend','<span class="cursor"></span>'); return; }
+    el.insertAdjacentHTML('beforeend', lines[i]); i++;
+    setTimeout(next, 420 + Math.min(i*30,260));
+  }
+  next();
+})();
+
+/* ---- divisions slideshow ---- */
+(function(){
+  var slides=document.getElementById('slides'),dots=document.getElementById('ssDots');if(!slides)return;
+  DIVS.forEach(function(d,i){
+    var s=document.createElement('div');s.className='slide'+(i===0?' on':'');
+    var media=d.graphic?'<div class="media" style="background:linear-gradient(135deg,var(--indigo),#2a1d8f);display:flex;align-items:center;justify-content:center"><span style="font-family:var(--f-mono);font-weight:700;font-size:clamp(48px,7vw,96px);color:var(--lime)">{ }</span></div>':'<div class="media'+(d.center?' center':'')+'"><img src="'+d.img+'" alt="'+d.name+'" loading="lazy"></div>';
+    s.innerHTML=media+'<div class="copy"><span class="tag">'+d.tag+'</span><h3>'+d.name+'</h3><p>'+d.line+'</p><a class="go" href="'+d.url+'">'+d.link+' ↗</a></div>';
+    slides.appendChild(s);
+    var b=document.createElement('button');b.className=(i===0?'on':'');b.setAttribute('aria-label','Slide '+(i+1));b.onclick=function(){go(i);};dots.appendChild(b);
+  });
+  var n=DIVS.length,cur=0,timer;
+  function go(i){cur=(i+n)%n;[].forEach.call(slides.children,function(s,j){s.classList.toggle('on',j===cur);});[].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===cur);});restart();}
+  function restart(){if(reduce)return;clearInterval(timer);timer=setInterval(function(){go(cur+1);},5000);}
+  document.getElementById('ssPrev').onclick=function(){go(cur-1);};
+  document.getElementById('ssNext').onclick=function(){go(cur+1);};
+  restart();
+})();
+
+/* ---- ALTERNATE acrostic ---- */
+(function(){
+  var word=document.getElementById('altWord'), panel=document.getElementById('altPanel'); if(!word) return;
+  function show(g,n){ panel.innerHTML='<span class="num">'+String(n+1).padStart(2,'0')+' / 09 — '+g.L+'</span><span class="nm" style="color:'+g.a+'">'+g.name+'</span><span class="ln">'+g.line+'</span><a href="'+g.ios+'" target="_blank" rel="noopener">Get it ↗</a>'; }
+  GAMES.forEach(function(g,n){
+    var c=document.createElement('a'); c.className='alt-l'; c.href=g.ios; c.target='_blank'; c.rel='noopener';
+    c.style.setProperty('--a',g.a); c.setAttribute('role','listitem'); c.setAttribute('aria-label',g.name);
+    c.innerHTML='<span class="ltr" style="color:'+g.a+'">'+g.L+'</span><img src="assets-v2/posters/'+g.id+'.jpg" alt="" loading="lazy">';
+    c.addEventListener('mouseenter',function(){show(g,n);});
+    c.addEventListener('focus',function(){show(g,n);});
+    word.appendChild(c);
+  });
+  show(GAMES[0],0);
+})();
+
+/* ---- see in motion: per-game iPhone previews ---- */
+(function(){
+  var screen=document.getElementById('screen'),islider=document.getElementById('islider');if(!screen)return;
+  var tag=document.getElementById('mTag'),name=document.getElementById('mName'),slog=document.getElementById('mSlogan'),get=document.getElementById('mGet');
+  var phone=screen.parentElement; var LANDSCAPE={lost:1,echo:1};
+  // build phone layers once
+  var HASCLIP={apex:1,triagles:1,eclipse:1,rune:1,nibwell:1,anagrail:1,echo:1};
+  GAMES.forEach(function(g,i){
+    var layer;
+    if(HASCLIP[g.id]){layer=document.createElement('video');layer.src='assets-v2/preview/'+g.id+'.mp4';layer.muted=true;layer.loop=true;layer.playsInline=true;layer.setAttribute('preload','none');layer.poster='assets-v2/preview/'+g.id+'-1.jpg';}
+    else{layer=document.createElement('img');layer.src='assets-v2/preview/'+g.id+'-1.jpg';layer.alt=g.name;layer.loading='lazy';}
+    layer.className='layer'+(i===0?' on':'');layer.dataset.i=i;screen.appendChild(layer);
+  });
+  function select(i){
+    var g=GAMES[i];
+    phone.classList.toggle('land', !!LANDSCAPE[g.id]);
+    [].forEach.call(screen.children,function(l,j){var on=j===i;l.classList.toggle('on',on);if(l.tagName==='VIDEO'){if(on){l.preload='auto';if(!reduce){var p=l.play&&l.play();if(p&&p.catch)p.catch(function(){});}}else{l.pause&&l.pause();}}});
+    [].forEach.call(islider.children,function(c,j){c.classList.toggle('on',j===i);c.setAttribute('aria-selected',j===i);});
+    tag.textContent='Veratus Games · '+(g.android?'iOS · Android':'iOS');
+    name.textContent=g.name;name.style.color=g.a;
+    slog.textContent=g.line;
+    var ios='<a class="badge" href="'+g.ios+'" target="_blank" rel="noopener"><img src="assets-v2/badges/app-store-badge.svg" alt="Download on the App Store"></a>';
+    var and=g.android?'<a class="badge" href="'+g.android+'" target="_blank" rel="noopener"><img src="assets-v2/badges/google-play-badge.svg" alt="Get it on Google Play"></a>':'<span class="soon">iOS first · Android soon</span>';
+    get.innerHTML=ios+and;
+  }
+  GAMES.forEach(function(g,i){
+    var c=document.createElement('button');c.className='ic'+(i===0?' on':'');c.type='button';c.setAttribute('role','tab');c.setAttribute('aria-label',g.name);
+    c.innerHTML='<img src="assets-v2/icons/'+g.id+'.png" alt="'+g.name+'">';
+    c.addEventListener('click',function(){select(i);});
+    c.addEventListener('mouseenter',function(){select(i);});
+    islider.appendChild(c);
+  });
+  select(0);
+})();
+
+/* ---- scroll reveal ---- */
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+})();
+</script>
 </body>
 </html>
