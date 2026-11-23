@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://veratusgroup.com/sitemap.xml
