@@ -1,337 +1,90 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About — Veratus Group</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link rel="icon" type="image/svg+xml" href="assets/veratus-mark.svg"/>
-<link rel="stylesheet" href="veratus.css"/>
-<style>
-  .pagehead { border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
-  .pagehead__glow { position:absolute; top:-40%; right:-10%; width:60vw; height:60vw; background: radial-gradient(circle, rgba(75,77,242,0.16), transparent 62%); pointer-events:none; }
-  .pagehead__inner { position: relative; padding-block: clamp(56px,8vw,104px); }
-  .crumbs { font-family: var(--f-mono); font-size: 12px; letter-spacing:.14em; text-transform:uppercase; color: var(--fg-3); }
-  .crumbs a:hover { color: var(--accent-bright); }
-
-  .twocol { display:grid; grid-template-columns: 0.8fr 1.5fr; gap: clamp(28px,5vw,72px); align-items:start; }
-  @media (max-width: 820px){ .twocol { grid-template-columns:1fr; gap:24px; } }
-
-  .principles { display:grid; grid-template-columns: repeat(3,1fr); gap:1px; background: var(--line); border:1px solid var(--line); border-radius:3px; overflow:hidden; margin-top:8px; }
-  .principle { background: var(--ink); padding: clamp(22px,3vw,32px); display:flex; flex-direction:column; gap:12px; }
-  .principle .n { font-family: var(--f-mono); font-size:12px; letter-spacing:.16em; color: var(--accent-bright); }
-  @media (max-width: 760px){ .principles { grid-template-columns:1fr; } }
-
-  /* Structure list (minimal hierarchy) */
-  .struct { border:1px solid var(--paper-line); border-radius:3px; overflow:hidden; }
-  .struct__row { display:flex; align-items:center; gap:18px; padding:18px 22px; border-bottom:1px solid var(--paper-line); }
-  .struct__row:last-child { border-bottom:0; }
-  .struct__row--child { padding-left:48px; background: rgba(10,11,13,0.025); }
-  .struct__row--leaf { padding-left:74px; background: rgba(10,11,13,0.04); }
-  .struct__k { font-family: var(--f-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color: var(--on-paper-3); margin-left:auto; }
-  .struct__name { font-family: var(--f-display); font-weight:700; letter-spacing:-.01em; }
-  .struct__row--child .struct__name { font-size:18px; }
-  .struct__row--leaf .struct__name { font-weight:600; font-size:15px; color: var(--on-paper-2); }
-  .struct__tick { width:9px; height:9px; flex:none; background: var(--accent); }
-  .struct__row--child .struct__tick { background: var(--accent-bright); }
-  .struct__row--leaf .struct__tick { width:6px; height:6px; background: var(--on-paper-3); }
-
-  .ctaband { position: relative; overflow: hidden; border-top: 1px solid var(--line); }
-  .ctaband__glow { position: absolute; inset: 0; background: radial-gradient(60% 120% at 50% 120%, rgba(75,77,242,0.22), transparent 70%); pointer-events: none; }
-  .ctaband__inner { position: relative; text-align: center; padding-block: clamp(64px,9vw,120px); display: flex; flex-direction: column; align-items: center; gap: 26px; }
-</style>
+<meta name="description" content="Veratus Group is an independent technology company — a solo studio shipping software and games people want to use every day.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets-v2/site.css">
 </head>
-<body data-screen-label="03 About">
+<body>
 
-  <header class="nav">
-    <div class="nav__inner">
-      <a class="brand" href="index.html" aria-label="Veratus Group home">
-        <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <rect x="6" y="38" width="17" height="17" rx="3.5" fill="#3A3CE0"></rect><rect x="40.5" y="9" width="17" height="17" rx="3.5" fill="#7378FF"></rect>
-          <rect x="23" y="23.5" width="17" height="17" rx="3.5" fill="#4B4DF2"></rect>
-        </svg>
-        <span class="brand__name">VERATUS<b>.</b></span>
-      </a>
-      <nav class="nav__links" aria-label="Primary">
-        <a class="nav__link" href="index.html">Home</a>
-        <a class="nav__link" href="subsidiaries.html">Subsidiaries</a>
-        <a class="nav__link" href="about.html" aria-current="page">About</a>
-        <a class="nav__link" href="https://veratusconsulting.com" target="_blank" rel="noopener">Build with us ↗</a>
-        <a class="nav__link nav__link--keep" href="contact.html">Contact</a>
-        <a class="nav__link nav__link--keep" href="wallpapers/">Wallpapers</a>
-        <a class="btn btn--ghost nav__cta" href="contact.html">Get in touch <span class="arr">→</span></a>
-      </nav>
-    </div>
-  </header>
+<nav class="bar"><div class="wrap">
+  <a class="brand" href="index.html"><span class="dot"></span>veratus<span style="color:var(--mut)">:~$</span></a>
+  <div class="nav-links">
+    <a href="subsidiaries.html">./divisions</a>
+    <a href="about.html" class="here">./about</a>
+    <a href="contact.html">./contact</a>
+    <a class="btn lime cta" href="https://veratusconsulting.com" style="padding:9px 15px">Start a build</a>
+  </div>
+</div></nav>
 
-  <main>
-    <section class="pagehead">
-      <div class="pagehead__glow"></div>
-      <div class="wrap pagehead__inner">
-        <p class="crumbs"><a href="index.html">Veratus</a> / About</p>
-        <h1 class="display d-xl" style="margin-top:18px; max-width:14ch;">A small group with a long horizon.</h1>
-        <p class="lede" style="margin-top:22px;">
-          Veratus Group is an independent technology company. It's a solo studio —
-          one founder shipping software and games people want to use every day.
-        </p>
-      </div>
-    </section>
+<main>
+<header class="phero"><div class="wrap">
+  <div class="crumb"><a href="index.html">veratus:~$</a> / about</div>
+  <span class="kicker">● a small group · a long horizon</span>
+  <h1>Software. Games.<br><span class="fill">One founder.</span></h1>
+  <p class="lede">Veratus Group is an independent technology company — a solo studio shipping software and games people want to use every day.</p>
+  <div class="stats">
+    <div class="stat"><b>04</b><span>Divisions</span></div>
+    <div class="stat"><b>11</b><span>Titles</span></div>
+    <div class="stat"><b>01</b><span>Founder</span></div>
+  </div>
+</div></header>
 
-    <!-- MISSION -->
-    <section class="section" data-screen-label="Mission">
-      <div class="wrap">
-        <div class="twocol fade-up">
-          <p class="eyebrow"><span class="idx">01</span> Who we are</p>
-          <div class="stack">
-            <h2 class="display d-lg">We build things people keep open.</h2>
-            <p class="body-lg">
-              Veratus Group brings two disciplines under one roof: productivity
-              software for the Mac, and original mobile games. They look different on
-              the surface, but they come from the same place — a belief that the best
-              products are fast, opinionated, and finished.
-            </p>
-            <p class="body-lg">
-              Veratus is a solo studio. One founder ships every product, top to
-              bottom — design, code, release, support. That keeps scope tight,
-              decisions fast, and accountability obvious. The group structure
-              exists so each brand can stand on its own as the work scales.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+<section><div class="wrap">
+  <div class="sh"><h2>Who we are.</h2><span class="tag">// 01</span></div>
+  <div class="prose">
+    <p>Veratus Group brings two disciplines under one roof: productivity software for the Mac, and original mobile games. They look different on the surface, but they come from the same place — a belief that the best products are <strong>fast, opinionated, and finished</strong>.</p>
+    <p>Veratus is a solo studio. One founder ships every product, top to bottom — design, code, release, support. That keeps scope tight, decisions fast, and accountability obvious. The group structure exists so each brand can stand on its own as the work scales.</p>
+  </div>
+</div></section>
 
-    <!-- PRINCIPLES -->
-    <section class="section on-paper" data-screen-label="Principles">
-      <div class="wrap">
-        <p class="eyebrow" style="margin-bottom:18px;"><span class="idx">02</span> How we work</p>
-        <div class="principles fade-up" style="background:var(--paper-line);">
-          <div class="principle" style="background:var(--paper);">
-            <span class="n">01</span>
-            <h3 class="display d-sm">Ship, then sharpen</h3>
-            <p class="body">We'd rather put something real in front of people than polish in private. Momentum beats perfection.</p>
-          </div>
-          <div class="principle" style="background:var(--paper);">
-            <span class="n">02</span>
-            <h3 class="display d-sm">Native &amp; fast</h3>
-            <p class="body">Software should feel at home on its platform and respond instantly. Performance is a feature, not an afterthought.</p>
-          </div>
-          <div class="principle" style="background:var(--paper);">
-            <span class="n">03</span>
-            <h3 class="display d-sm">Made to be used daily</h3>
-            <p class="body">Whether it's a Mac app or a mobile game, we build for the long run — things worth coming back to.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<section style="padding-top:0"><div class="wrap">
+  <div class="sh"><h2>How we work.</h2><span class="tag">// 02</span></div>
+  <div class="grid3">
+    <div class="card"><div class="n">01</div><h3>Ship, then sharpen</h3><p>We'd rather put something real in front of people than polish in private. Momentum beats perfection.</p></div>
+    <div class="card"><div class="n">02</div><h3>Native &amp; fast</h3><p>Software should feel at home on its platform and respond instantly. Performance is a feature, not an afterthought.</p></div>
+    <div class="card"><div class="n">03</div><h3>Made to be used daily</h3><p>Whether it's a Mac app or a mobile game, we build for the long run — things worth coming back to.</p></div>
+  </div>
+</div></section>
 
-    <!-- STRUCTURE (minimal) -->
-    <section class="section on-paper" style="padding-top:0;" data-screen-label="Structure">
-      <div class="wrap">
-        <div class="twocol">
-          <p class="eyebrow"><span class="idx">03</span> The group</p>
-          <div class="stack">
-            <h2 class="display d-md">Structure</h2>
-            <div class="struct fade-up">
-              <div class="struct__row">
-                <span class="struct__tick"></span>
-                <span class="struct__name" style="font-size:20px;">Veratus Group</span>
-                <span class="struct__k">Parent · veratusgroup.com</span>
-              </div>
-              <div class="struct__row struct__row--child">
-                <span class="struct__tick"></span>
-                <span class="struct__name">FileCura</span>
-                <span class="struct__k">Software · macOS</span>
-              </div>
-              <div class="struct__row struct__row--child">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Veratus Games</span>
-                <span class="struct__k">Games studio</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Apex Drift</span>
-                <span class="struct__k">Shooter</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Lost in the Woods</span>
-                <span class="struct__k">RPG</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Triagles</span>
-                <span class="struct__k">Puzzle</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Eclipse Run</span>
-                <span class="struct__k">Arcade runner</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Rune Rogue</span>
-                <span class="struct__k">Roguelike</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Nibwell</span>
-                <span class="struct__k">Strategy</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Anagrail</span>
-                <span class="struct__k">Word</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Tott</span>
-                <span class="struct__k">Maths puzzle</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Echo: Descend</span>
-                <span class="struct__k">Audio survival</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">TidePost</span>
-                <span class="struct__k">Puzzle</span>
-              </div>
-              <div class="struct__row struct__row--leaf">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Signal Room</span>
-                <span class="struct__k">Mystery · soon</span>
-              </div>
-              <div class="struct__row struct__row--child">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Veratus Consulting</span>
-                <span class="struct__k">Services · build &amp; ship</span>
-              </div>
-              <div class="struct__row struct__row--child">
-                <span class="struct__tick"></span>
-                <span class="struct__name">Reflow</span>
-                <span class="struct__k">Apps · iOS</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section style="padding-top:0"><div class="wrap">
+  <div class="sh"><h2>The group.</h2><span class="tag">// 03 structure</span></div>
+  <div class="divrow">
+    <a class="div" href="https://filecura.com"><span class="ix">01</span><div><span class="tag">Software · macOS</span><h3>FileCura</h3><p>A local-first workflow platform that turns Finder into a workflow engine.</p></div><span class="btn ghost sm">filecura.com ↗</span></a>
+    <a class="div" href="https://veratusgames.com"><span class="ix">02</span><div><span class="tag">Games · iOS &amp; Android</span><h3>Veratus Games</h3><p>Original, tightly-crafted mobile titles — a lineup that spells ALTERNATE.</p></div><span class="btn ghost sm">veratusgames.com ↗</span></a>
+    <a class="div" href="https://veratusconsulting.com"><span class="ix">03</span><div><span class="tag">Services · build &amp; ship</span><h3>Veratus Consulting</h3><p>Your app or game, built end to end. Every engagement starts with a paid Blueprint.</p></div><span class="btn ghost sm">veratusconsulting.com ↗</span></a>
+    <a class="div" href="https://reflowroom.com"><span class="ix">04</span><div><span class="tag">Apps · iOS</span><h3>Reflow</h3><p>Rearrange the room you already have — scan a space, move the furniture, see it in 3D first.</p></div><span class="btn ghost sm">reflowroom.com ↗</span></a>
+  </div>
+</div></section>
 
-    <!-- COMPANY INFORMATION -->
-    <section class="section" data-screen-label="Company information">
-      <div class="wrap">
-        <div class="twocol fade-up">
-          <p class="eyebrow"><span class="idx">04</span> Company information</p>
-          <div class="stack">
-            <h2 class="display d-md">On the public record.</h2>
-            <p class="body-lg">
-              Veratus Group is a UK private limited company, registered at
-              Companies House. Below are the current public-record details.
-            </p>
-            <div class="struct" style="border-color:var(--line); margin-top:10px;">
-              <div class="struct__row" style="border-bottom:1px solid var(--line); padding:16px 22px;">
-                <span class="struct__name" style="font-size:15px; font-weight:600;">Legal name</span>
-                <span class="struct__k" style="color:var(--fg-2);">Veratus Group Limited</span>
-              </div>
-              <div class="struct__row" style="border-bottom:1px solid var(--line); padding:16px 22px;">
-                <span class="struct__name" style="font-size:15px; font-weight:600;">Companies House no.</span>
-                <span class="struct__k" style="color:var(--fg-2);">17258282</span>
-              </div>
-              <div class="struct__row" style="border-bottom:1px solid var(--line); padding:16px 22px;">
-                <span class="struct__name" style="font-size:15px; font-weight:600;">Form</span>
-                <span class="struct__k" style="color:var(--fg-2);">Private company limited by shares</span>
-              </div>
-              <div class="struct__row" style="border-bottom:1px solid var(--line); padding:16px 22px;">
-                <span class="struct__name" style="font-size:15px; font-weight:600;">Jurisdiction</span>
-                <span class="struct__k" style="color:var(--fg-2);">England and Wales</span>
-              </div>
-              <div class="struct__row" style="border-bottom:1px solid var(--line); padding:16px 22px;">
-                <span class="struct__name" style="font-size:15px; font-weight:600;">Registered office</span>
-                <span class="struct__k" style="color:var(--fg-2);">On the public record at Companies House</span>
-              </div>
-              <div class="struct__row" style="border-bottom:1px solid var(--line); padding:16px 22px;">
-                <span class="struct__name" style="font-size:15px; font-weight:600;">Director</span>
-                <span class="struct__k" style="color:var(--fg-2);">Oluwaseni Sholanke</span>
-              </div>
-              <div class="struct__row" style="padding:16px 22px;">
-                <span class="struct__name" style="font-size:15px; font-weight:600;">Contact</span>
-                <span class="struct__k"><a href="mailto:hello@veratusgroup.com" style="color:var(--accent-bright);">hello@veratusgroup.com</a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section style="padding-top:0"><div class="wrap">
+  <div class="sh"><h2>Company information.</h2><span class="tag">// 04 on the public record</span></div>
+  <p class="lede" style="margin-bottom:22px">Veratus Group is a UK private limited company, registered at Companies House.</p>
+  <div class="spec">
+    <div><span>Legal name</span><span>Veratus Group Limited</span></div>
+    <div><span>Companies House no.</span><span>17258282</span></div>
+    <div><span>Form</span><span>Private company limited by shares</span></div>
+    <div><span>Jurisdiction</span><span>England and Wales</span></div>
+    <div><span>Director</span><span>Oluwaseni Sholanke</span></div>
+    <div><span>Contact</span><span>hello@veratusgroup.com</span></div>
+  </div>
+</div></section>
 
-    <section class="ctaband on-ink" data-screen-label="CTA">
-      <div class="ctaband__glow"></div>
-      <div class="wrap ctaband__inner">
-        <p class="eyebrow eyebrow--accent">Veratus Group</p>
-        <h2 class="display d-xl" style="max-width:16ch;">See what we're building.</h2>
-        <div class="row" style="justify-content:center;">
-          <a class="btn btn--accent" href="subsidiaries.html">Explore our work <span class="arr">→</span></a>
-          <a class="btn btn--ghost" href="contact.html">Get in touch</a>
-        </div>
-      </div>
-    </section>
-  </main>
+<section style="padding-top:0"><div class="wrap">
+  <div class="band">
+    <h2>Have an idea?<br><span>We'll build it.</span></h2>
+    <div class="r"><a class="btn" href="https://veratusconsulting.com">Book a Blueprint →</a><a class="btn o" href="mailto:hello@veratusgroup.com">hello@veratusgroup.com</a></div>
+  </div>
+</div></section>
+</main>
 
-  <footer class="foot">
-    <div class="foot__top">
-      <div class="foot__col">
-        <a class="brand" href="index.html" style="margin-bottom:18px;">
-          <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <rect x="6" y="38" width="17" height="17" rx="3.5" fill="#3A3CE0"></rect><rect x="40.5" y="9" width="17" height="17" rx="3.5" fill="#7378FF"></rect>
-            <rect x="23" y="23.5" width="17" height="17" rx="3.5" fill="#4B4DF2"></rect>
-          </svg>
-          <span class="brand__name">VERATUS<b>.</b></span>
-        </a>
-        <p class="body" style="max-width:34ch;">An independent technology group building software and games.</p>
-        <p class="body muted" style="max-width:34ch; margin-top:10px; font-size:12.5px; line-height:1.5;">Veratus Group Limited · Registered in England and Wales · Company no. 17258282</p>
-      </div>
-      <div class="foot__col">
-        <h4>Company</h4>
-        <a href="index.html">Home</a>
-        <a href="subsidiaries.html">Subsidiaries</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="foot__col">
-        <h4>Divisions</h4>
-        <a href="https://filecura.com" target="_blank" rel="noopener">FileCura ↗</a>
-        <a href="https://veratusgames.com" target="_blank" rel="noopener">Veratus Games ↗</a>
-        <a href="https://veratusconsulting.com" target="_blank" rel="noopener">Veratus Consulting ↗</a>
-        <a href="https://reflowroom.com" target="_blank" rel="noopener">Reflow ↗</a>
-      </div>
-    </div>
-    <div class="foot__bottom">
-      <span>© 2026 Veratus Group</span>
-      <span>veratusgroup.com</span>
-    </div>
-  </footer>
-
-  <script>
-    (function(){
-      var io = new IntersectionObserver(function(es){
-        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
-      }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
-      document.querySelectorAll('.fade-up').forEach(function(el){ io.observe(el); });
-    })();
-  </script>
-  <script data-vg-reveal>
-  (function(){
-    var sels = ['.hero__inner','.pagehead__inner','.ohead__inner','.ctaband__inner','.octa > .wrap','.section > .wrap','.osec > .wrap'];
-    var add = [];
-    sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){
-      if(el.classList.contains('fade-up')) return;
-      if(el.querySelector('.fade-up')) return;
-      el.classList.add('fade-up'); add.push(el);
-    }); });
-    if(!('IntersectionObserver' in window)){ add.forEach(function(el){ el.classList.add('in'); }); return; }
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.06, rootMargin: '0px 0px -4% 0px' });
-    add.forEach(function(el){ io.observe(el); });
-  })();
-  </script>
+<footer><div class="wrap">
+  <span>© 2026 Veratus Group Limited · No. 17258282</span>
+  <span>FileCura · Veratus Games · Veratus Consulting · Reflow</span>
+</div></footer>
 </body>
 </html>

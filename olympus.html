@@ -1,311 +1,89 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Veratus Games — A Veratus Group studio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link rel="icon" type="image/svg+xml" href="assets/veratus-mark.svg"/>
-<link rel="stylesheet" href="veratus.css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"/>
+<meta name="description" content="Veratus Games is Veratus Group's mobile game studio — eleven original titles for iOS and Android, a lineup that spells ALTERNATE.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets-v2/site.css">
 <style>
-  /* Whole page wears the night sky */
-  body.oly-page {
-    background:
-      radial-gradient(58% 40% at 80% 8%, rgba(44,58,115,.55), transparent 70%),
-      radial-gradient(52% 46% at 8% 70%, rgba(31,42,85,.5), transparent 70%),
-      linear-gradient(180deg,#070A16 0%, #0A0E1F 55%, #0B1024 100%);
-    background-attachment: fixed;
-  }
-  .oly-page .nav { background: rgba(7,10,22,0.72); border-bottom-color: rgba(255,255,255,.08); }
-
-  .ohead { position: relative; overflow: hidden; border-bottom: 1px solid rgba(245,199,84,.18); }
-  .ohead__stars { position:absolute; left:0; top:0; width:100%; height:340px; opacity:.7; pointer-events:none; }
-  .ohead__mtn { position:absolute; left:0; bottom:-1px; width:100%; height:58%; opacity:.5; pointer-events:none; }
-  .ohead__laurel { position:absolute; right:5%; top:14%; width:min(360px,30vw); opacity:.08; pointer-events:none; }
-  .ohead__inner { position:relative; z-index:1; padding-block: clamp(52px,8vw,104px); }
-  .ocrumbs { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#5F6A91; }
-  .ocrumbs a { color:#8893BC; }
-  .ocrumbs a:hover { color:#F5C754; }
-  .oly-eye { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:.2em; color:#8893BC; display:inline-flex; align-items:center; gap:10px; }
-  .oly-eye .idx { color:#F5C754; }
-  .ohead__logo { width:min(480px,86%); height:auto; margin:22px 0 26px; }
-  .oly-h1 { margin:0; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(40px,7vw,96px); letter-spacing:-.03em; line-height:.95; color:#F6F8FF; }
-  .oly-lede { margin:24px 0 0; font-family:'Inter',sans-serif; font-size:clamp(16px,1.7vw,21px); line-height:1.5; color:#B9C2E0; max-width:54ch; }
-  .ohead__stats { margin-top:40px; display:flex; gap:40px; flex-wrap:wrap; }
-  .ostat { display:flex; flex-direction:column; gap:4px; }
-  .ostat .v { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.02em; line-height:1; color:#F5C754; }
-  .ostat .l { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#8893BC; }
-
-  .osec { padding-block: clamp(56px,8vw,104px); }
-  .oly-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-  .gtile { position:relative; border-radius:16px; overflow:hidden; aspect-ratio:4/5; border:1px solid rgba(255,255,255,.08); background:linear-gradient(155deg,#161E40,#0F1530); transition:transform .22s cubic-bezier(.16,.84,.24,1), box-shadow .22s; }
-  .gtile:hover { transform:translateY(-5px); box-shadow:0 22px 48px -18px rgba(0,0,0,.75); }
-  .gtile__art { position:absolute; inset:0;
-    background:
-      radial-gradient(60% 60% at 50% 30%, color-mix(in srgb,var(--gc) 22%,transparent), transparent 70%),
-      linear-gradient(180deg, color-mix(in srgb,var(--gc) 13%,transparent) 0%, transparent 50%, #05070F 100%); }
-  .gtile__glyph { position:absolute; top:10%; left:50%; transform:translateX(-50%); font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(130px,17vw,210px); letter-spacing:-.04em; color:var(--gc); opacity:.18; line-height:1; pointer-events:none; }
-  .gtile__body { position:relative; z-index:1; height:100%; padding:26px; display:flex; flex-direction:column; justify-content:space-between; }
-  .gtile__top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
-  .gtile__tag { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.22em; color:var(--gc); }
-  .gtile__flag { padding:4px 10px; border-radius:999px; background:color-mix(in srgb,var(--gc) 14%,transparent); border:1px solid color-mix(in srgb,var(--gc) 42%,transparent); font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.14em; color:var(--gc); white-space:nowrap; }
-  .gtile__name { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(24px,2.4vw,30px); letter-spacing:-.02em; line-height:1; color:#F6F8FF; }
-  .gtile__genre { margin-top:6px; font-family:'Inter',sans-serif; font-size:14px; color:#B9C2E0; }
-  .gtile__desc { margin-top:12px; font-family:'Inter',sans-serif; font-size:13.5px; line-height:1.5; color:#8893BC; }
-  .gtile__plat { margin-top:16px; display:flex; gap:8px; }
-  .gtile__plat span { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; color:#8893BC; padding:5px 10px; border:1px solid rgba(255,255,255,.14); border-radius:3px; }
-
-  /* === Apex Drift — launched tile: whole card links to the App Store,
-        hover/focus reveals a cross-fading screenshot reel === */
-  a.gtile { text-decoration:none; color:inherit; display:block; }
-  .gtile--live { cursor:pointer; }
-  .gtile--live:focus-visible { outline:2px solid var(--gc); outline-offset:3px; }
-  .gtile__shots { position:absolute; inset:0; z-index:0; opacity:0; transition:opacity .4s ease; pointer-events:none; }
-  .gtile--live:hover .gtile__shots,
-  .gtile--live:focus-visible .gtile__shots { opacity:1; }
-  .gtile__shots img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; opacity:0; }
-  .gtile__shots img:first-child { object-fit:contain; background:#05070F; } /* app icon shown whole, not cropped */
-  .gtile--live:hover .gtile__shots img,
-  .gtile--live:focus-visible .gtile__shots img { animation-name:apexReel; animation-duration:12s; animation-iteration-count:infinite; }
-  .gtile__shots img:nth-child(1){ animation-delay:0s; }
-  .gtile__shots img:nth-child(2){ animation-delay:2.4s; }
-  .gtile__shots img:nth-child(3){ animation-delay:4.8s; }
-  .gtile__shots img:nth-child(4){ animation-delay:7.2s; }
-  .gtile__shots img:nth-child(5){ animation-delay:9.6s; }
-  @keyframes apexReel { 0%{opacity:0;} 2.5%{opacity:1;} 17%{opacity:1;} 20%{opacity:0;} 100%{opacity:0;} }
-  /* fade the resting art + glyph back so the screenshots read clearly */
-  .gtile--live:hover .gtile__art, .gtile--live:hover .gtile__glyph,
-  .gtile--live:focus-visible .gtile__art, .gtile--live:focus-visible .gtile__glyph { opacity:.10; transition:opacity .4s ease; }
-  /* scrim keeps the tag + name + CTA legible over a busy screenshot */
-  .gtile--live .gtile__body { position:relative; z-index:2; }
-  .gtile--live:hover .gtile__body, .gtile--live:focus-visible .gtile__body {
-    background:linear-gradient(180deg, rgba(5,7,15,.62) 0%, rgba(5,7,15,.12) 26%, rgba(5,7,15,.5) 60%, rgba(5,7,15,.92) 100%); }
-  /* "Out now" live pill (green = launched, distinct from the gold in-dev flags) */
-  .gtile__flag--live { background:rgba(91,227,138,.16); border-color:rgba(91,227,138,.5); color:#9CF5BE; }
-  /* App Store CTA line */
-  .gtile__store { margin-top:14px; display:inline-flex; align-items:center; gap:8px;
-    font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--gc); }
-  .gtile__store .arr { transition:transform .18s; }
-  .gtile--live:hover .gtile__store .arr, .gtile--live:focus-visible .gtile__store .arr { transform:translateX(4px); }
-  /* reduced motion: show the first screenshot statically, no reel cycling */
-  @media (prefers-reduced-motion: reduce){
-    .gtile--live:hover .gtile__shots img, .gtile--live:focus-visible .gtile__shots img { animation:none; }
-    .gtile--live:hover .gtile__shots img:first-child, .gtile--live:focus-visible .gtile__shots img:first-child { opacity:1; }
-  }
-
-  .ostudio { display:grid; grid-template-columns:0.9fr 1.4fr; gap:clamp(28px,5vw,64px); align-items:start;
-    border-top:1px solid rgba(255,255,255,.08); padding-top:clamp(48px,7vw,80px); }
-  .ostudio h2 { margin:0; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(28px,3.4vw,44px); letter-spacing:-.025em; line-height:1.04; color:#F6F8FF; }
-  .ostudio p { font-family:'Inter',sans-serif; font-size:17px; line-height:1.6; color:#B9C2E0; }
-
-  .octa { position:relative; overflow:hidden; border-top:1px solid rgba(245,199,84,.18); text-align:center; padding-block:clamp(64px,9vw,120px); }
-  .octa__laurel { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:380px; opacity:.1; pointer-events:none; }
-  .ogold-btn {
-    display:inline-flex; align-items:center; gap:10px;
-    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:14px; letter-spacing:.08em; text-transform:uppercase;
-    padding:16px 28px; border-radius:4px; color:#1A1206;
-    background:linear-gradient(180deg,#FFE38A 0%, #F5C754 55%, #B98817 100%);
-    box-shadow:0 0 0 1px rgba(245,199,84,.55), 0 10px 28px -8px rgba(245,199,84,.5);
-    transition:transform .14s cubic-bezier(.34,1.4,.5,1), filter .2s;
-  }
-  .ogold-btn:hover { filter:brightness(1.05); transform:translateY(-2px); }
-  .ogold-btn:active { transform:translateY(1px); }
-  .oghost-btn {
-    display:inline-flex; align-items:center; gap:10px;
-    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; letter-spacing:.06em; text-transform:uppercase;
-    padding:16px 26px; border-radius:4px; color:#E4E8FA;
-    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.16);
-    transition:border-color .18s, background .18s;
-  }
-  .oghost-btn:hover { border-color:#F6F8FF; background:rgba(255,255,255,.07); }
-
-  @media (max-width:860px){ .ostudio { grid-template-columns:1fr; } .ohead__stats { gap:28px; } }
-  @media (max-width:1000px){ .oly-grid { grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:720px){ .oly-grid { grid-template-columns:1fr; } }
+.gg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:900px){.gg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.gg{grid-template-columns:repeat(2,1fr)}}
+.gc{display:flex;flex-direction:column;gap:10px;border:2px solid var(--ink);border-radius:var(--r);background:#fff;padding:16px;transition:transform .15s,box-shadow .15s}
+.gc:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--indigo)}
+.gc img{width:56px;height:56px;border-radius:15px;display:block}
+.gc b{font-family:var(--f-disp);font-size:17px;letter-spacing:-.01em}
+.gc span{color:var(--ink2);font-size:13px;flex:1}
+.gc .s{font-family:var(--f-mono);font-size:11px;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em}
+.gc.soon{opacity:.72;border-style:dashed}
+.gc.soon .s{color:var(--mut)}
 </style>
 </head>
-<body class="oly-page" data-screen-label="Veratus Games">
+<body>
 
-  <header class="nav">
-    <div class="nav__inner">
-      <a class="brand" href="index.html" aria-label="Veratus Group home">
-        <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <rect x="6" y="38" width="17" height="17" rx="3.5" fill="#3A3CE0"></rect><rect x="40.5" y="9" width="17" height="17" rx="3.5" fill="#7378FF"></rect>
-          <rect x="23" y="23.5" width="17" height="17" rx="3.5" fill="#4B4DF2"></rect>
-        </svg>
-        <span class="brand__name">VERATUS<b>.</b></span>
-      </a>
-      <nav class="nav__links" aria-label="Primary">
-        <a class="nav__link" href="index.html">Home</a>
-        <a class="nav__link" href="subsidiaries.html" aria-current="page">Subsidiaries</a>
-        <a class="nav__link" href="about.html">About</a>
-        <a class="nav__link" href="https://veratusconsulting.com" target="_blank" rel="noopener">Build with us ↗</a>
-        <a class="nav__link nav__link--keep" href="contact.html">Contact</a>
-        <a class="nav__link nav__link--keep" href="wallpapers/">Wallpapers</a>
-        <a class="btn btn--ghost nav__cta" href="subsidiaries.html">All work <span class="arr">→</span></a>
-      </nav>
-    </div>
-  </header>
+<nav class="bar"><div class="wrap">
+  <a class="brand" href="index.html"><span class="dot"></span>veratus<span style="color:var(--mut)">:~$</span></a>
+  <div class="nav-links">
+    <a href="subsidiaries.html">./divisions</a>
+    <a href="about.html">./about</a>
+    <a href="contact.html">./contact</a>
+    <a class="btn lime cta" href="https://veratusgames.com" style="padding:9px 15px">Play the games</a>
+  </div>
+</div></nav>
 
-  <main>
-    <!-- VERATUS GAMES HEAD -->
-    <section class="ohead">
-      <svg class="ohead__stars" viewBox="0 0 1920 600" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
-        <g fill="#F6F8FF">
-          <circle cx="180" cy="90" r="1.4"></circle><circle cx="360" cy="150" r="1"></circle>
-          <circle cx="560" cy="70" r="1.2"></circle><circle cx="760" cy="130" r="1.5"></circle>
-          <circle cx="980" cy="44" r="1"></circle><circle cx="1080" cy="92" r="1"></circle>
-          <circle cx="1280" cy="160" r="1.3"></circle><circle cx="1480" cy="70" r="1.2"></circle>
-          <circle cx="1660" cy="140" r="1.4"></circle><circle cx="1790" cy="64" r="1.1"></circle>
-        </g>
-      </svg>
-      <svg class="ohead__mtn" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-        <path d="M0 820 L240 540 L420 720 L640 480 L900 700 L1100 520 L1320 760 L1560 580 L1780 720 L1920 660 L1920 1080 L0 1080 Z" fill="#05070F"></path>
-        <path d="M0 880 L300 660 L520 820 L780 600 L1000 800 L1240 620 L1520 840 L1760 700 L1920 780 L1920 1080 L0 1080 Z" fill="#080B19"></path>
-      </svg>
-      <img class="ohead__laurel" src="assets/olympus-laurel.svg" alt="" aria-hidden="true"/>
+<main>
+<header class="phero"><div class="wrap">
+  <div class="crumb"><a href="index.html">veratus:~$</a> / divisions / veratus games</div>
+  <span class="kicker">● games division · iOS &amp; Android</span>
+  <h1>Eleven worlds.<br><span class="fill">One studio.</span></h1>
+  <p class="lede">Veratus Games is Veratus Group's mobile game studio — original, tightly-crafted titles built native and fast, a lineup that spells <strong>ALTERNATE</strong>.</p>
+  <div class="stats">
+    <div class="stat"><b>11</b><span>Titles</span></div>
+    <div class="stat"><b>10</b><span>Live now</span></div>
+    <div class="stat"><b>iOS</b><span>+ Android</span></div>
+  </div>
+  <div style="margin-top:24px"><a class="btn lime" href="https://veratusgames.com">Explore the games →</a></div>
+</div></header>
 
-      <div class="wrap ohead__inner">
-        <p class="ocrumbs"><a href="index.html">Veratus</a> / <a href="subsidiaries.html">Subsidiaries</a> / Veratus Games</p>
-        <img class="ohead__logo" src="assets/olympus-lockup.svg" alt="Veratus Games"/>
-        <h1 class="oly-h1">Eleven worlds.<br/>One studio.</h1>
-        <p class="oly-lede">
-          Veratus Games is Veratus Group's mobile game studio — original,
-          tightly-crafted titles for iOS and Android. Apex Drift, Lost in the
-          Woods, Triagles, Eclipse Run, Rune Rogue, Nibwell, Anagrail, Tott, Echo: Descend
-          and TidePost are all live on the App Store, with Signal Room coming soon.
-        </p>
-        <div class="ohead__stats">
-          <div class="ostat"><span class="v">11</span><span class="l">Titles</span></div>
-          <div class="ostat"><span class="v" style="color:#5EE3FF;">iOS</span><span class="l">+ Android · 2026</span></div>
-          <div class="ostat"><span class="v">★</span><span class="l">A Veratus studio</span></div>
-        </div>
-        <div class="row" style="margin-top:30px;">
-          <a class="ogold-btn" href="https://veratusgames.com" target="_blank" rel="noopener">Explore the games <span>→</span></a>
-        </div>
-      </div>
-    </section>
+<section><div class="wrap">
+  <div class="sh"><h2>Built for the climb.</h2><span class="tag">// the studio</span></div>
+  <div class="prose">
+    <p>Veratus Games designs competitive mobile worlds with depth — games you can come back to every day and keep climbing. Each title is built native and fast, with a ranked spine and a world worth living in.</p>
+    <p>Veratus Games operates as the games division of Veratus Group. Full details, store links, and press materials live at <a href="https://veratusgames.com">veratusgames.com</a>.</p>
+  </div>
+</div></section>
 
-    <!-- THE LINEUP -->
-    <section class="osec">
-      <div class="wrap">
-        <p class="oly-eye" style="margin-bottom:18px; color:#F5C754;"><span class="idx">▸</span> The lineup</p>
-        <div class="oly-grid">
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/apex-drift/id6777362579" target="_blank" rel="noopener" aria-label="Apex Drift — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/apex.jpg" alt="Apex Drift — Own the chaos." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/lost-in-the-woods/id6786471951" target="_blank" rel="noopener" aria-label="Lost in the Woods — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/lost.jpg" alt="Lost in the Woods — Keep your light alive." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/triagles/id6783455265" target="_blank" rel="noopener" aria-label="Triagles — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/triagles.jpg" alt="Triagles — Find your winning angle." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/eclipse-run/id6782432091" target="_blank" rel="noopener" aria-label="Eclipse Run — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/eclipse.jpg" alt="Eclipse Run — One tap. Total focus." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/rune-rogue/id6793398520" target="_blank" rel="noopener" aria-label="Rune Rogue — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/rune.jpg" alt="Rune Rogue — One drop. A new chain." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/nibwell/id6784772164" target="_blank" rel="noopener" aria-label="Nibwell — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/nibwell.jpg" alt="Nibwell — Small moves. Big consequences." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/anagrail/id6811488558" target="_blank" rel="noopener" aria-label="Anagrail — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/anagrail.jpg" alt="Anagrail — Ordinary letters. Rare finds." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/tott/id6815092852" target="_blank" rel="noopener" aria-label="Tott — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/tott.jpg" alt="Tott — Hit it. Exactly." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/echo-descend/id6810128944" target="_blank" rel="noopener" aria-label="Echo: Descend — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/echo.jpg" alt="Echo: Descend — Sound is sight." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://apps.apple.com/us/app/tidepost/id6817768913" target="_blank" rel="noopener" aria-label="TidePost — download on the App Store (opens in a new tab)">
-            <img src="assets/posters/tidepost.jpg" alt="TidePost — Little boat. Big decisions." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-          </a>
-          <a class="gtile gtile--live" href="https://veratusgames.com/games.html#signal" target="_blank" rel="noopener" aria-label="Signal Room — coming soon">
-            <img src="assets/posters/signal.jpg" alt="Signal Room — Every signal hides a secret." loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;"/>
-            <span style="position:absolute;left:0;right:0;bottom:0;z-index:6;padding:12px 14px;background:linear-gradient(transparent,rgba(5,7,15,.92));display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#D8A33C;"><span style="width:6px;height:6px;border-radius:50%;background:#D8A33C;"></span>Coming soon</span>
-          </a>
-        </div>
+<section style="padding-top:0"><div class="wrap">
+  <div class="sh"><h2>The lineup.</h2><span class="tag">// ten live · one soon</span></div>
+  <div class="gg">
+    <a class="gc" href="https://apps.apple.com/us/app/apex-drift/id6777362579"><img src="assets-v2/icons/apex.png" alt=""><span class="s">A · shooter</span><b>Apex Drift</b><span>Own the chaos.</span></a>
+    <a class="gc" href="https://apps.apple.com/us/app/lost-in-the-woods/id6786471951"><img src="assets-v2/icons/lost.png" alt=""><span class="s">L · RPG</span><b>Lost in the Woods</b><span>Keep your light alive.</span></a>
+    <a class="gc" href="https://apps.apple.com/us/app/triagles/id6783455265"><img src="assets-v2/icons/triagles.png" alt=""><span class="s">T · puzzle</span><b>Triagles</b><span>Find your winning angle.</span></a>
+    <a class="gc" href="https://apps.apple.com/us/app/eclipse-run/id6782432091"><img src="assets-v2/icons/eclipse.png" alt=""><span class="s">E · arcade</span><b>Eclipse Run</b><span>One tap. Total focus.</span></a>
+    <a class="gc" href="https://apps.apple.com/us/app/rune-rogue/id6793398520"><img src="assets-v2/icons/rune.png" alt=""><span class="s">R · roguelike</span><b>Rune Rogue</b><span>One drop. A new chain.</span></a>
+    <a class="gc" href="https://apps.apple.com/us/app/nibwell/id6784772164"><img src="assets-v2/icons/nibwell.png" alt=""><span class="s">N · strategy</span><b>Nibwell</b><span>Small moves. Big consequences.</span></a>
+    <a class="gc" href="https://apps.apple.com/us/app/anagrail/id6811488558"><img src="assets-v2/icons/anagrail.png" alt=""><span class="s">A · word</span><b>Anagrail</b><span>Ordinary letters. Rare finds.</span></a>
+    <a class="gc" href="https://apps.apple.com/us/app/tott/id6815092852"><img src="assets-v2/icons/tott.png" alt=""><span class="s">T · maths</span><b>tott.</b><span>Hit it. Exactly.</span></a>
+    <a class="gc" href="https://apps.apple.com/us/app/echo-descend/id6810128944"><img src="assets-v2/icons/echo.png" alt=""><span class="s">E · audio survival</span><b>Echo: Descend</b><span>Sound is sight.</span></a>
+    <a class="gc" href="https://apps.apple.com/us/app/tidepost/id6817768913"><img src="assets-v2/icons/tidepost.png" alt=""><span class="s">cozy puzzle</span><b>TidePost</b><span>Little boat. Big decisions.</span></a>
+    <span class="gc soon"><img src="assets-v2/icons/signal.png" alt=""><span class="s">coming soon</span><b>Signal Room</b><span>Every signal hides a secret.</span></span>
+  </div>
+</div></section>
 
-        <!-- STUDIO -->
-        <div class="ostudio" style="margin-top:clamp(48px,7vw,80px);">
-          <p class="oly-eye"><span class="idx">01</span> The studio</p>
-          <div class="stack">
-            <h2>Built for the climb.</h2>
-            <p>
-              Veratus Games designs competitive mobile worlds with depth — games you can
-              come back to every day and keep climbing. Each title is built native
-              and fast, with a ranked spine and a world worth living in.
-            </p>
-            <p style="color:#8893BC; font-size:15px;">
-              Veratus Games operates as the games division of Veratus Group. Release
-              dates, store links, and press materials follow as each title nears launch.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+<section style="padding-top:0"><div class="wrap">
+  <div class="band">
+    <h2>The climb<br><span>starts here.</span></h2>
+    <div class="r"><a class="btn" href="https://veratusgames.com">See all games →</a><a class="btn o" href="contact.html">Get in touch</a></div>
+  </div>
+</div></section>
+</main>
 
-    <!-- CTA -->
-    <section class="octa">
-      <img class="octa__laurel" src="assets/olympus-laurel.svg" alt="" aria-hidden="true"/>
-      <div class="wrap" style="position:relative; z-index:1;">
-        <p class="oly-eye" style="justify-content:center; color:#F5C754;">★ The climb starts here</p>
-        <h2 class="oly-h1" style="font-size:clamp(34px,5vw,68px); margin-top:18px;">Step onto the mountain.</h2>
-        <div class="row" style="justify-content:center; margin-top:30px; gap:14px;">
-          <a class="ogold-btn" href="contact.html">Get in touch <span>→</span></a>
-          <a class="oghost-btn" href="subsidiaries.html">Back to subsidiaries</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="foot">
-    <div class="foot__top">
-      <div class="foot__col">
-        <a class="brand" href="index.html" style="margin-bottom:18px;">
-          <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <rect x="6" y="38" width="17" height="17" rx="3.5" fill="#3A3CE0"></rect><rect x="40.5" y="9" width="17" height="17" rx="3.5" fill="#7378FF"></rect>
-            <rect x="23" y="23.5" width="17" height="17" rx="3.5" fill="#4B4DF2"></rect>
-          </svg>
-          <span class="brand__name">VERATUS<b>.</b></span>
-        </a>
-        <p class="body" style="max-width:34ch;">An independent technology group building software and games.</p>
-        <p class="body muted" style="max-width:34ch; margin-top:10px; font-size:12.5px; line-height:1.5;">Veratus Group Limited · Registered in England and Wales · Company no. 17258282</p>
-      </div>
-      <div class="foot__col">
-        <h4>Company</h4>
-        <a href="index.html">Home</a>
-        <a href="subsidiaries.html">Subsidiaries</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="foot__col">
-        <h4>Divisions</h4>
-        <a href="https://filecura.com" target="_blank" rel="noopener">FileCura ↗</a>
-        <a href="https://veratusgames.com" target="_blank" rel="noopener">Veratus Games ↗</a>
-        <a href="https://veratusconsulting.com" target="_blank" rel="noopener">Veratus Consulting ↗</a>
-        <a href="https://reflowroom.com" target="_blank" rel="noopener">Reflow ↗</a>
-      </div>
-    </div>
-    <div class="foot__bottom">
-      <span>© 2026 Veratus Group</span>
-      <span>veratusgroup.com</span>
-    </div>
-  </footer>
-  <script data-vg-reveal>
-  (function(){
-    var sels = ['.hero__inner','.pagehead__inner','.ohead__inner','.ctaband__inner','.octa > .wrap','.section > .wrap','.osec > .wrap'];
-    var add = [];
-    sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){
-      if(el.classList.contains('fade-up')) return;
-      if(el.querySelector('.fade-up')) return;
-      el.classList.add('fade-up'); add.push(el);
-    }); });
-    if(!('IntersectionObserver' in window)){ add.forEach(function(el){ el.classList.add('in'); }); return; }
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.06, rootMargin: '0px 0px -4% 0px' });
-    add.forEach(function(el){ io.observe(el); });
-  })();
-  </script>
+<footer><div class="wrap">
+  <span>© 2026 Veratus Group Limited · No. 17258282</span>
+  <span>FileCura · Veratus Games · Veratus Consulting · Reflow</span>
+</div></footer>
 </body>
 </html>
