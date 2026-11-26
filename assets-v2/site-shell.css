@@ -7,7 +7,7 @@
 .site-header .shell-desktop{margin-left:auto;font-size:14px}
 .site-header .shell-desktop a{white-space:nowrap}
 .site-header .shell-cta{font-size:14px;min-height:44px;padding:10px 16px}
-.site-header a[aria-current]{background:var(--bg2);color:var(--ink)}
+.site-header a[aria-current]:not(.brand){background:var(--bg2);color:var(--ink)}
 .site-menu{display:none;position:relative;flex-shrink:0}
 .site-menu summary{display:flex;align-items:center;justify-content:center;gap:9px;list-style:none;min-width:64px;min-height:44px;padding:10px 13px;border:1px solid var(--line);border-radius:var(--shell-radius);background:#fff;color:var(--ink);font:600 14px/1.4 var(--f-mono);cursor:pointer}
 .site-menu summary::-webkit-details-marker{display:none}
@@ -31,3 +31,10 @@
 @media(max-width:1150px){.site-header .shell-desktop{display:none}.site-menu{display:block;margin-left:auto}}
 @media(max-width:640px){.site-footer .shell-footer{grid-template-columns:minmax(0,1fr)}.shell-footer-links{justify-content:flex-start}.site-header .shell-frame{gap:10px}.site-header .brand{max-width:calc(100% - 80px)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+
+/* Visible wallpaper shortcut: retained outside Menu at compact widths. */
+.site-header .shell-wallpapers{display:none}
+.site-header .shell-desktop .nav-wallpapers{border:1px solid var(--shell-accent);border-radius:var(--shell-radius);padding:10px 14px;color:var(--shell-accent);font-weight:700}
+.shell-mobile-links .nav-wallpapers{border:1px solid var(--shell-accent);font-weight:700}
+@media(max-width:1150px){.site-header .shell-wallpapers{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;margin-left:auto;border:1px solid var(--shell-accent);border-radius:var(--shell-radius);background:#fff;color:var(--shell-accent);font:700 14px/1.4 var(--shell-body);text-decoration:none;white-space:nowrap}.site-header .site-menu{margin-left:0}}
+@media(max-width:640px){:root{--site-header-offset:117px}nav.site-header .shell-frame{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 10px;height:auto;padding-top:10px;padding-bottom:10px}nav.site-header .brand{grid-column:1;grid-row:1;max-width:none}nav.site-header .site-menu{grid-column:2;grid-row:1}nav.site-header .shell-wallpapers{grid-column:1 / -1;grid-row:2;margin-left:0;width:100%}nav.site-header .inner{border-radius:24px}}
