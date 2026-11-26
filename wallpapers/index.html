@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="../assets-v2/site.css">
 <link rel="stylesheet" href="../assets-v2/wallpapers.css"><link rel="stylesheet" href="../assets-v2/site-shell.css">
+<script src="../assets-v2/site-shell.js" defer></script>
 </head>
 <body class="wallpapers-page">
 <!-- VERATUS:SITE-HEADER -->
@@ -32,7 +33,7 @@
   <p class="wp-lede">Twenty-five original designs from across Veratus Group &mdash; our own abstract series and spotlights from the studio. Pick one, choose your device by name, and we hand you the perfect fit.</p>
   <div class="wp-device" id="device"><span class="wp-device-dot"></span><span id="deviceNote">Finding your screen&hellip;</span></div>
 </div></section>
-<section class="wp-toolbar"><div class="wrap wp-toolbar-inner"><label class="wp-tool"><span class="wp-tool-key">Device</span><select id="allDev" class="wp-select"></select></label><label class="wp-tool"><span class="wp-tool-key">Show</span><select id="gameSel" class="wp-select"></select></label><div class="wp-tool"><span class="wp-tool-key">&nbsp;</span><details class="wp-menu" id="dlMenu"><summary class="wp-button">Download</summary><div class="wp-menu-pop"><button class="wp-menu-item" id="dlDevice">Download all for my device<small id="dlDeviceSub"></small></button><button class="wp-menu-item" id="dlAllRes">Download all resolutions<small>Every size of what’s shown — large</small></button></div></details></div><div class="wp-tool"><span class="wp-tool-key">&nbsp;</span><button class="wp-button wp-button--secondary" id="selBtn" aria-pressed="false" aria-controls="grid">Select</button></div><div class="wp-toolbar-right"><span class="wp-status" id="wstatus" role="status" aria-live="polite"></span><span class="wp-count" id="wcount"></span></div><div class="wp-selection" id="selbar" hidden><span class="wp-count" id="selInfo" role="status" aria-live="polite">0 selected</span><button class="wp-button" id="dlSel">Download selection</button><button class="wp-button wp-button--secondary" id="selClear">Clear</button><button class="wp-button wp-button--secondary" id="selDone">Done</button></div></div></section>
+<section class="wp-toolbar"><div class="wrap wp-toolbar-inner"><label class="wp-tool"><span class="wp-tool-key">Device</span><select id="allDev" class="wp-select"></select></label><label class="wp-tool"><span class="wp-tool-key">Show</span><select id="gameSel" class="wp-select"></select></label><div class="wp-tool"><span class="wp-tool-key">&nbsp;</span><details class="wp-menu" id="dlMenu"><summary class="wp-button">Download</summary><div class="wp-menu-pop"><button class="wp-menu-item" id="dlDevice">Download all for my device<small id="dlDeviceSub"></small></button><button class="wp-menu-item" id="dlAllRes">Download all resolutions<small>Every size of what’s shown — large</small></button></div></details></div><div class="wp-tool"><span class="wp-tool-key">&nbsp;</span><button class="wp-button wp-button--secondary" id="selBtn" aria-pressed="false" aria-controls="grid">Select</button></div><div class="wp-toolbar-right" style="flex-wrap:wrap"><span class="wp-status" id="wstatus" role="status" aria-live="polite"></span><span class="wp-count" id="wcount"></span><span id="dlCancelWrap" hidden><button type="button" class="wp-button wp-button--secondary" id="dlCancel" aria-label="Cancel wallpaper download">Cancel</button></span></div><div class="wp-selection" id="selbar" hidden><span class="wp-count" id="selInfo" role="status" aria-live="polite">0 selected</span><button class="wp-button" id="dlSel">Download selection</button><button class="wp-button wp-button--secondary" id="selClear">Clear</button><button class="wp-button wp-button--secondary" id="selDone">Done</button></div></div></section>
 <main class="wp-main" id="main"><div class="wrap"><div class="wp-grid" id="grid"></div><p class="wp-license">Veratus Group · Wallpapers are free for personal use. Pick the device closest to yours — your screen scales art to fit.</p></div></main>
 <!-- VERATUS:SITE-FOOTER -->
 <footer class="site-footer"><div class="wrap shell-footer"><div class="shell-footer-brand"><p>© 2026 Veratus Group Limited · No. 17258282</p><a href="mailto:hello@veratusgroup.com">hello@veratusgroup.com</a></div><nav class="shell-footer-links" aria-label="Footer"><a href="../about.html">About</a><a href="../subsidiaries.html">The group</a><a href="../olympus.html">Games</a><a href="../wallpapers/" aria-current="page">Wallpapers</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><a href="../refunds.html">Refunds</a><a href="https://filecura.com">FileCura</a><a href="https://reflowroom.com">Reflow</a><a href="https://veratusgroup.com">Veratus Group</a><a href="https://veratusgames.com">Veratus Games</a><a href="https://veratusconsulting.com">Veratus Consulting</a></nav></div></footer>
@@ -128,14 +129,115 @@ lb.addEventListener("close",function(){
 });
 document.getElementById("lbClose").onclick=function(){lb.close();};
 lb.addEventListener("click",function(e){if(e.target===lb)lb.close();});
-function busy(b){["dlDevice","dlAllRes","dlSel","selBtn"].forEach(function(id){var el=document.getElementById(id);if(el)el.disabled=b;});}
-async function zipFetch(list,profs,suffix){var total=list.length*profs.length,done=0,fail=0,zip=new JSZip();busy(true);
- for(var i=0;i<list.length;i++){var d=list[i];for(var j=0;j<profs.length;j++){var p=profs[j];done++;if(done%4===0||done===total)wstatus.textContent="Zipping "+done+"/"+total+"…";
-  try{var buf=await fetch(fileUrl(d,p)).then(function(r){if(!r.ok)throw 0;return r.arrayBuffer();});zip.file((profs.length>1?(d.id+"-"+d.s+"/"):"")+d.id+"-"+d.s+"-"+p.w+"x"+p.h+".jpg",buf);}catch(e){fail++;}}}
- wstatus.textContent="Packaging…";
- try{var blob=await zip.generateAsync({type:"blob",compression:"STORE"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=SITE+"-wallpapers-"+suffix+".zip";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href);},6000);wstatus.textContent=fail?(fail+" skipped"):"Done";}
- catch(e){wstatus.textContent="Too large — narrow it down";}
- busy(false);setTimeout(function(){wstatus.textContent="";},6000);}
+var downloadJob=null, DOWNLOAD_REQUEST_TIMEOUT_MS=30000;
+var dlCancel=document.getElementById("dlCancel"),dlCancelWrap=document.getElementById("dlCancelWrap");
+function busy(b){
+ ["dlDevice","dlAllRes","dlSel","selBtn"].forEach(function(id){var el=document.getElementById(id);if(el)el.disabled=b;});
+ dlCancelWrap.hidden=!b;
+}
+function downloadError(name){var error=new Error(name);error.name=name;return error;}
+async function fetchWallpaper(url,job){
+ if(job.cancelled)throw downloadError("AbortError");
+ var controller=new AbortController(),timer,abort;
+ var stopped=new Promise(function(resolve,reject){
+  abort=function(error){reject(error);controller.abort();};
+  job.abortRequest=function(){abort(downloadError("AbortError"));};
+  timer=setTimeout(function(){abort(downloadError("TimeoutError"));},DOWNLOAD_REQUEST_TIMEOUT_MS);
+ });
+ var abortRequest=job.abortRequest;
+ try{
+  return await Promise.race([
+   fetch(url,{signal:controller.signal}).then(function(response){if(!response.ok)throw downloadError("ImageUnavailable");return response.arrayBuffer();}),
+   stopped
+  ]);
+ }finally{
+  clearTimeout(timer);
+  if(job.abortRequest===abortRequest)job.abortRequest=null;
+ }
+}
+function packageWallpapers(zip,job){
+ return new Promise(function(resolve,reject){
+  var stream,parts=[],settled=false;
+  function finish(error){
+   if(settled)return;
+   settled=true;job.stopPackaging=null;
+   if(error){
+    if(stream){try{stream.pause();}catch(ignore){}}
+    parts=[];reject(error);return;
+   }
+   try{var blob=new Blob(parts,{type:"application/zip"});parts=[];resolve(blob);}
+   catch(error){parts=[];reject(error);}
+  }
+  job.stopPackaging=function(){finish(downloadError("AbortError"));};
+  try{
+   stream=zip.generateInternalStream({type:"uint8array",compression:"STORE"});
+   stream.on("data",function(chunk){if(job.cancelled)finish(downloadError("AbortError"));else if(!settled)parts.push(chunk);})
+    .on("error",function(error){finish(error);})
+    .on("end",function(){finish(job.cancelled?downloadError("AbortError"):null);});
+   if(job.cancelled)job.stopPackaging();else stream.resume();
+  }catch(error){finish(error);}
+ });
+}
+function cancelDownload(){
+ var job=downloadJob;if(!job||job.cancelled)return;
+ job.cancelled=true;wstatus.textContent="Cancelled. No ZIP was downloaded.";
+ if(job.abortRequest)job.abortRequest();
+ if(job.stopPackaging)job.stopPackaging();
+}
+dlCancel.onclick=cancelDownload;
+async function zipFetch(list,profs,suffix){
+ if(downloadJob)return;
+ var job={cancelled:false,abortRequest:null,stopPackaging:null,opener:document.activeElement};
+ var zip=null,done=0,included=0,fail=0,timedOut=0;
+ downloadJob=job;
+ try{
+  busy(true);dlCancel.focus({preventScroll:true});wstatus.textContent="Preparing wallpapers…";
+  if(!list.length||!profs.length){wstatus.textContent="Choose wallpapers to download first.";return;}
+  try{
+   if(typeof JSZip!=="function")throw downloadError("ZipUnavailable");
+   zip=new JSZip();
+   if(typeof zip.file!=="function"||typeof zip.generateInternalStream!=="function")throw downloadError("ZipUnavailable");
+  }catch(error){wstatus.textContent="ZIP downloads could not start. Refresh the page, or use Download in a wallpaper preview.";return;}
+  if(typeof AbortController!=="function"){
+   wstatus.textContent="This browser cannot prepare ZIP downloads. Use Download in a wallpaper preview.";return;
+  }
+  var total=list.length*profs.length;
+  for(var i=0;i<list.length;i++){
+   var d=list[i];
+   for(var j=0;j<profs.length;j++){
+    if(job.cancelled)throw downloadError("AbortError");
+    var p=profs[j],buf;done++;
+    if(done===1||done%4===0||done===total)wstatus.textContent="Downloading "+done+"/"+total+"…";
+    try{buf=await fetchWallpaper(fileUrl(d,p),job);}
+    catch(error){if(job.cancelled)throw error;fail++;if(error.name==="TimeoutError")timedOut++;continue;}
+    if(job.cancelled)throw downloadError("AbortError");
+    zip.file((profs.length>1?(d.id+"-"+d.s+"/"):"")+d.id+"-"+d.s+"-"+p.w+"x"+p.h+".jpg",buf);included++;
+   }
+  }
+  if(job.cancelled)throw downloadError("AbortError");
+  if(!included){
+   wstatus.textContent=timedOut?"No wallpapers downloaded. Requests timed out. Check your connection and try again.":"No wallpapers could be downloaded. Check your connection and try again.";return;
+  }
+  wstatus.textContent="Preparing ZIP…";
+  var blob=await packageWallpapers(zip,job);
+  if(job.cancelled)throw downloadError("AbortError");
+  var url=null,a=null;
+  try{
+   url=URL.createObjectURL(blob);a=document.createElement("a");a.href=url;a.download=SITE+"-wallpapers-"+suffix+".zip";
+   document.body.appendChild(a);a.click();
+  }finally{
+   if(a)a.remove();
+   if(url)setTimeout(function(){URL.revokeObjectURL(url);},6000);
+  }
+  wstatus.textContent="Done — "+included+" included"+(fail?", "+fail+" skipped"+(timedOut?" ("+timedOut+" timed out)":""):"")+".";
+ }catch(error){
+  wstatus.textContent=job.cancelled?"Cancelled. No ZIP was downloaded.":"The ZIP could not be prepared. Try fewer wallpapers, or download one at a time.";
+ }finally{
+  zip=null;job.abortRequest=null;job.stopPackaging=null;
+  if(downloadJob===job){downloadJob=null;busy(false);}
+  if(document.activeElement===dlCancel){(visibleControl(job.opener)?job.opener:selBtn).focus({preventScroll:true});}
+ }
+}
 document.getElementById("dlDevice").onclick=function(){dlMenu.open=false;var list=filtered();if(!list.length)return;if(list.length>40&&!confirm("Download "+list.length+" wallpapers (~"+Math.round(list.length*1.8)+" MB) for "+curDev().n+"?"))return;zipFetch(list,[curProf()],"for-"+devSlug());};
 document.getElementById("dlAllRes").onclick=function(){dlMenu.open=false;var list=filtered();if(!list.length)return;var total=list.length*M.profiles.length,mb=Math.round(total*0.45);if(!confirm("Download EVERY resolution of "+list.length+" wallpapers?\n\n"+total+" images, roughly "+(mb>1024?(mb/1024).toFixed(1)+" GB":mb+" MB")+".\nLarge sets can be slow or fail in the browser — narrowing with the Show menu first is recommended."))return;zipFetch(list,M.profiles,"all-resolutions-"+(active==="all"?"all":active));};
 function setSelMode(on){selMode=on;grid.classList.toggle("selmode",on);selbar.hidden=!on;selBtn.textContent=on?"Exit select":"Select";selBtn.setAttribute("aria-pressed",String(on));}

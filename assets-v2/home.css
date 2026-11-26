@@ -114,3 +114,8 @@ html:not(.js) .reveal{opacity:1;transform:none}
 .band .btn{background:var(--lime);color:var(--ink);border-color:var(--lime)}
 .band .btn:hover{box-shadow:5px 5px 0 rgba(0,0,0,.3)}
 .band .btn.o{background:transparent;color:#fff;border-color:#fff}
+
+/* Selected-preview playback control follows the existing Group button style. */
+.preview-playback{margin-top:18px;min-height:44px}
+.preview-playback[hidden]{display:none}
+.preview-status{font:400 14px/1.5 var(--f-body);color:var(--ink2);min-height:1.5em;margin-top:8px}

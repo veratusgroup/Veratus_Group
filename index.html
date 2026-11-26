@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="assets-v2/home.css">
 <link rel="stylesheet" href="assets-v2/lineup-additions.css">
 <link rel="stylesheet" href="assets-v2/site-shell.css">
+<script src="assets-v2/game-preview.js" defer></script>
+<script src="assets-v2/site-shell.js" defer></script>
 </head>
 <body>
 
@@ -86,6 +88,8 @@
       <h3 id="mName">Apex Drift</h3>
       <p class="slogan" id="mSlogan">Own the chaos.</p>
       <div class="get" id="mGet"></div>
+      <button class="btn o preview-playback" id="previewPlayback" type="button" aria-controls="screen">Play preview</button>
+      <p class="preview-status" id="previewStatus" role="status" aria-live="polite"></p>
       <div class="islider" id="islider" role="group" aria-label="Choose a game"></div>
     </div>
   </div>
@@ -214,41 +218,6 @@ var DIVS=[
     var item=document.createElement('li');item.appendChild(c);word.appendChild(item);
   });
   show(GAMES[0],0);
-})();
-
-/* ---- see in motion: per-game iPhone previews ---- */
-(function(){
-  var screen=document.getElementById('screen'),islider=document.getElementById('islider');if(!screen)return;
-  var tag=document.getElementById('mTag'),name=document.getElementById('mName'),slog=document.getElementById('mSlogan'),get=document.getElementById('mGet');
-  var phone=screen.parentElement; var LANDSCAPE={lost:1,echo:1};
-  // build phone layers once
-  var HASCLIP={apex:1,triagles:1,eclipse:1,rune:1,nibwell:1,anagrail:1,echo:1};
-  GAMES.forEach(function(g,i){
-    var layer;
-    if(HASCLIP[g.id]){layer=document.createElement('video');layer.src='assets-v2/preview/'+g.id+'.mp4';layer.muted=true;layer.loop=true;layer.playsInline=true;layer.setAttribute('preload','none');layer.poster='assets-v2/preview/'+g.id+'-1.jpg';}
-    else{layer=document.createElement('img');layer.src='assets-v2/preview/'+g.id+'-1.jpg';layer.alt=g.name;layer.loading='lazy';}
-    layer.className='layer'+(i===0?' on':'');layer.dataset.i=i;screen.appendChild(layer);
-  });
-  function select(i){
-    var g=GAMES[i];
-    phone.classList.toggle('land', !!LANDSCAPE[g.id]);
-    [].forEach.call(screen.children,function(l,j){var on=j===i;l.classList.toggle('on',on);if(l.tagName==='VIDEO'){if(on){l.preload='auto';if(!reduce){var p=l.play&&l.play();if(p&&p.catch)p.catch(function(){});}}else{l.pause&&l.pause();}}});
-    [].forEach.call(islider.children,function(c,j){c.classList.toggle('on',j===i);c.setAttribute('aria-pressed',j===i);});
-    tag.textContent='Veratus Games · '+(g.android?'iOS · Android':'iOS');
-    name.textContent=g.name;name.style.color=g.a;
-    slog.textContent=g.line;
-    var ios='<a class="badge" href="'+g.ios+'" target="_blank" rel="noopener"><img src="assets-v2/badges/app-store-badge.svg" alt="Download on the App Store"></a>';
-    var and=g.android?'<a class="badge" href="'+g.android+'" target="_blank" rel="noopener"><img src="assets-v2/badges/google-play-badge.svg" alt="Get it on Google Play"></a>':'<span class="soon">iOS first · Android soon</span>';
-    get.innerHTML=ios+and;
-  }
-  GAMES.forEach(function(g,i){
-    var c=document.createElement('button');c.className='ic'+(i===0?' on':'');c.type='button';c.setAttribute('aria-label',g.name);
-    c.innerHTML='<img src="assets-v2/icons/'+g.id+'.png" alt="'+g.name+'">';
-    c.addEventListener('click',function(){select(i);});
-    c.addEventListener('mouseenter',function(){select(i);});
-    islider.appendChild(c);
-  });
-  select(0);
 })();
 
 /* ---- scroll reveal ---- */

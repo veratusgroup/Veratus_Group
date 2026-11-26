@@ -16,6 +16,10 @@ for page in CONFIG['pages']:
  file=ROOT/rel;text=file.read_text();prefix='../'*len(rel.parent.parts)
  if 'site-shell.css' not in text:text=text.replace('</head>','<link rel="stylesheet" href="'+prefix+'assets-v2/site-shell.css">\n</head>')
  if page['mode']=='demo':file.write_text(text);continue
+ # Strict no-script product pages keep their CSP and native disclosure behavior.
+ no_script=bool(re.search(r"script-src\s+'none'",text))
+ shell_script='<script src="'+prefix+'assets-v2/site-shell.js" defer></script>'
+ if not no_script and shell_script not in text:text=text.replace('</head>',shell_script+'\n</head>')
  main=re.search(r'<main\b([^>]*)>',text);assert main,file
  idmatch=re.search(r'\bid="([^"]+)"',main.group(1))
  mainid=idmatch.group(1) if idmatch else 'main'
