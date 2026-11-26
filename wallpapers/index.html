@@ -28,7 +28,7 @@ h1{font-family:'Archivo';font-weight:800;font-size:clamp(34px,5.4vw,70px);letter
 .count{margin-left:auto;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3)}
 main{padding:30px 0 90px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--ink2);cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+.card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--ink2);transition:transform .2s,border-color .2s,box-shadow .2s}
 .card:hover{transform:translateY(-4px);border-color:var(--aline);box-shadow:0 26px 54px -26px #000}
 .card .thumb{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--ink1)}
 .card .meta{padding:14px 15px}
@@ -76,11 +76,18 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--fg3);font-siz
 .selbar .wcount{color:#F4F5F1}
 .selbar[hidden]{display:none}
 .card{position:relative}
-.ck{position:absolute;top:10px;left:10px;width:26px;height:26px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;font-size:14px;color:#fff;z-index:3}
-.grid.selmode .ck{display:flex}
-.card.sel .ck{background:#4B4DF2;border-color:#4B4DF2;color:#fff}
-.grid.selmode .card{cursor:pointer}
+.card-preview{display:block;width:100%;padding:0;border:0;border-radius:inherit;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.card .meta,.card .k,.card .nm{display:block}
+.card-select{position:absolute;top:10px;left:10px;z-index:3;display:none;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.65);background:rgba(0,0,0,.82);color:#fff;font-size:14px;font-weight:600;cursor:pointer}
+.card-select input{width:22px;height:22px;margin:0;accent-color:#4B4DF2;cursor:pointer}
+.grid.selmode .card-select{display:flex}
+.card.sel{border-color:#7378FF}
+.card.sel .card-select{background:#4B4DF2;border-color:#4B4DF2;color:#fff}
+:is(a,button,input,select,summary):focus-visible{outline:3px solid #7378FF;outline-offset:3px}
+.card-preview:focus-visible{outline-offset:-4px}
+.card-select input:focus-visible{outline-color:#fff;outline-offset:3px}
 @media(max-width:620px){.wtbar-right{margin-left:0;width:100%;justify-content:space-between}.wtool{flex:1 1 44%}.wsel{max-width:none;width:100%}.wmenu-pop{right:0;left:auto}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto!important}.card:hover{transform:none}}
 </style></head>
 <body>
 <header class="nav"><div class="wrap"><a class="brand" href="../index.html" aria-label="Veratus Group home" style="display:inline-flex;align-items:center;gap:11px;text-decoration:none">
@@ -93,10 +100,10 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--fg3);font-siz
   <p class="lede">Twenty-five original designs from across Veratus Group &mdash; our own abstract series and spotlights from the studio. Pick one, choose your device by name, and we hand you the perfect fit.</p>
   <div class="device" id="device"><span class="dot"></span><span id="deviceNote">Finding your screen&hellip;</span></div>
 </div></section>
-<section class="bar"><div class="wrap wtoolbar"><label class="wtool"><span class="wtool-k">Device</span><select id="allDev" class="wsel"></select></label><label class="wtool"><span class="wtool-k">Show</span><select id="gameSel" class="wsel"></select></label><div class="wtool"><span class="wtool-k">&nbsp;</span><details class="wmenu" id="dlMenu"><summary class="wbtn">&#8595; Download</summary><div class="wmenu-pop"><button class="wmenu-item" id="dlDevice">Download all for my device<small id="dlDeviceSub"></small></button><button class="wmenu-item" id="dlAllRes">Download all resolutions<small>Every size of what’s shown — large</small></button></div></details></div><div class="wtool"><span class="wtool-k">&nbsp;</span><button class="wbtn wbtn-ghost" id="selBtn">Select</button></div><div class="wtbar-right"><span class="wstatus" id="wstatus"></span><span class="wcount" id="wcount"></span></div><div class="selbar" id="selbar" hidden><span class="wcount" id="selInfo">0 selected</span><button class="wbtn" id="dlSel">&#8595; Download selection</button><button class="wbtn wbtn-ghost" id="selClear">Clear</button><button class="wbtn wbtn-ghost" id="selDone">Done</button></div></div></section>
+<section class="bar"><div class="wrap wtoolbar"><label class="wtool"><span class="wtool-k">Device</span><select id="allDev" class="wsel"></select></label><label class="wtool"><span class="wtool-k">Show</span><select id="gameSel" class="wsel"></select></label><div class="wtool"><span class="wtool-k">&nbsp;</span><details class="wmenu" id="dlMenu"><summary class="wbtn">&#8595; Download</summary><div class="wmenu-pop"><button class="wmenu-item" id="dlDevice">Download all for my device<small id="dlDeviceSub"></small></button><button class="wmenu-item" id="dlAllRes">Download all resolutions<small>Every size of what’s shown — large</small></button></div></details></div><div class="wtool"><span class="wtool-k">&nbsp;</span><button class="wbtn wbtn-ghost" id="selBtn" aria-pressed="false" aria-controls="grid">Select</button></div><div class="wtbar-right"><span class="wstatus" id="wstatus" role="status" aria-live="polite"></span><span class="wcount" id="wcount"></span></div><div class="selbar" id="selbar" hidden><span class="wcount" id="selInfo" role="status" aria-live="polite">0 selected</span><button class="wbtn" id="dlSel">&#8595; Download selection</button><button class="wbtn wbtn-ghost" id="selClear">Clear</button><button class="wbtn wbtn-ghost" id="selDone">Done</button></div></div></section>
 <main><div class="wrap"><div class="grid" id="grid"></div></div></main>
 <footer><div class="wrap">Veratus Group · Wallpapers are free for personal use. Pick the device closest to yours — your screen scales art to fit.</div></footer>
-<dialog id="lb"><div class="lb" style="position:relative"><button class="close" id="lbClose" aria-label="Close">&times;</button>
+<dialog id="lb" aria-labelledby="lbName" aria-describedby="lbVar"><div class="lb" style="position:relative"><button class="close" id="lbClose" aria-label="Close wallpaper preview" autofocus>&times;</button>
   <img class="pv" id="lbImg" alt="">
   <div class="body"><div class="k" id="lbGame"></div><h2 id="lbName"></h2><div class="vn" id="lbVar"></div>
     <div class="pick">
@@ -148,10 +155,42 @@ function filtered(){return M.designs.filter(function(d){return active==="all"||d
 var selMode=false, selected={};
 function selCount(){return Object.keys(selected).length;}
 function updateSel(){selInfo.textContent=selCount()+" selected";}
-function render(){var list=filtered();wcount.textContent=list.length+" designs";grid.innerHTML="";list.forEach(function(d){var c=document.createElement("div");c.className="card"+(selected[d.id]?" sel":"");c.innerHTML='<span class="ck">✓</span><img class="thumb" loading="lazy" src="'+thumb(d)+'" alt="'+d.t+'"><div class="meta"><div class="k">'+catLabel(d[CK])+'</div><div class="nm">'+(d.v||d.t)+'</div>'+(d.o?'<span class="og">Approved original</span>':'')+'</div>';c.onclick=function(){if(selMode){if(selected[d.id])delete selected[d.id];else selected[d.id]=1;c.classList.toggle("sel");updateSel();}else openLb(d);};grid.appendChild(c);});}
+function render(){
+ var list=filtered();wcount.textContent=list.length+" designs";grid.innerHTML="";
+ list.forEach(function(d){
+  var title=(d.v||d.t),category=catLabel(d[CK]);
+  var c=document.createElement("article");c.className="card"+(selected[d.id]?" sel":"");
+  var preview=document.createElement("button");preview.type="button";preview.className="card-preview";preview.dataset.designId=d.id;
+  preview.setAttribute("aria-label","Preview "+title+" — "+category);preview.setAttribute("aria-haspopup","dialog");preview.setAttribute("aria-controls","lb");
+  var image=document.createElement("img");image.className="thumb";image.loading="lazy";image.src=thumb(d);image.alt="";preview.appendChild(image);
+  var meta=document.createElement("span");meta.className="meta";
+  [["k",category],["nm",title]].forEach(function(item){var text=document.createElement("span");text.className=item[0];text.textContent=item[1];meta.appendChild(text);});
+  if(d.o){var original=document.createElement("span");original.className="og";original.textContent="Approved original";meta.appendChild(original);}
+  preview.appendChild(meta);preview.onclick=function(){openLb(d,preview);};c.appendChild(preview);
+  var choice=document.createElement("label");choice.className="card-select";
+  var checkbox=document.createElement("input");checkbox.type="checkbox";checkbox.checked=!!selected[d.id];checkbox.setAttribute("aria-label","Select "+title+" — "+category);
+  checkbox.onchange=function(){if(checkbox.checked)selected[d.id]=1;else delete selected[d.id];c.classList.toggle("sel",checkbox.checked);updateSel();};
+  var caption=document.createElement("span");caption.textContent="Select";caption.setAttribute("aria-hidden","true");choice.appendChild(checkbox);choice.appendChild(caption);c.appendChild(choice);grid.appendChild(c);
+ });
+}
 var curD=null;
 function setLbDl(){var p=prof[M.devices[+lbDev.value].p];lbDlSub.textContent=p.w+"×"+p.h;lbDl.onclick=function(){var a=document.createElement("a");a.href=fileUrl(curD,p);a.download=curD.id+"-"+curD.s+"-"+p.w+"x"+p.h+".jpg";document.body.appendChild(a);a.click();a.remove();};}
-function openLb(d){curD=d;document.getElementById("lbGame").textContent=catLabel(d[CK]);document.getElementById("lbName").textContent=(d.v||d.t);document.getElementById("lbVar").textContent=(d.d||(d.o?"Approved original":(hasLBL?"":"A new vision")));lbImg.src=thumb(d);lbDev.value=DEV;setLbDl();lb.showModal();}
+var lbOpener=null,lbDesignId=null;
+function openLb(d,opener){curD=d;lbOpener=opener||document.activeElement;lbDesignId=d.id;document.getElementById("lbGame").textContent=catLabel(d[CK]);document.getElementById("lbName").textContent=(d.v||d.t);document.getElementById("lbVar").textContent=(d.d||(d.o?"Approved original":(hasLBL?"":"A new vision")));lbImg.src=thumb(d);lbImg.alt=(d.v||d.t)+" — "+catLabel(d[CK]);lbDev.value=DEV;setLbDl();lb.showModal();document.getElementById("lbClose").focus({preventScroll:true});}
+function visibleControl(el){return el&&el.isConnected&&!el.disabled&&el.getClientRects().length&&!el.closest("[hidden],[inert]");}
+lb.addEventListener("keydown",function(e){
+ if(e.key!=="Tab")return;
+ var controls=[].filter.call(lb.querySelectorAll("button,select,input,a[href],[tabindex]"),function(el){return el.tabIndex>=0&&visibleControl(el);});
+ var first=controls[0],last=controls[controls.length-1],focused=document.activeElement;
+ if(!first){e.preventDefault();return;}
+ if(!lb.contains(focused)||(e.shiftKey&&focused===first)){e.preventDefault();(e.shiftKey?last:first).focus();}
+ else if(!e.shiftKey&&focused===last){e.preventDefault();first.focus();}
+});
+lb.addEventListener("close",function(){
+ var target=lbOpener;
+ if(!visibleControl(target)){target=[].filter.call(grid.querySelectorAll(".card-preview"),function(el){return el.dataset.designId===lbDesignId&&visibleControl(el);})[0];}
+ (target||gameSel).focus({preventScroll:true});lbOpener=null;lbDesignId=null;
+});
 document.getElementById("lbClose").onclick=function(){lb.close();};
 lb.addEventListener("click",function(e){if(e.target===lb)lb.close();});
 function busy(b){["dlDevice","dlAllRes","dlSel","selBtn"].forEach(function(id){var el=document.getElementById(id);if(el)el.disabled=b;});}
@@ -164,11 +203,11 @@ async function zipFetch(list,profs,suffix){var total=list.length*profs.length,do
  busy(false);setTimeout(function(){wstatus.textContent="";},6000);}
 document.getElementById("dlDevice").onclick=function(){dlMenu.open=false;var list=filtered();if(!list.length)return;if(list.length>40&&!confirm("Download "+list.length+" wallpapers (~"+Math.round(list.length*1.8)+" MB) for "+curDev().n+"?"))return;zipFetch(list,[curProf()],"for-"+devSlug());};
 document.getElementById("dlAllRes").onclick=function(){dlMenu.open=false;var list=filtered();if(!list.length)return;var total=list.length*M.profiles.length,mb=Math.round(total*0.45);if(!confirm("Download EVERY resolution of "+list.length+" wallpapers?\n\n"+total+" images, roughly "+(mb>1024?(mb/1024).toFixed(1)+" GB":mb+" MB")+".\nLarge sets can be slow or fail in the browser — narrowing with the Show menu first is recommended."))return;zipFetch(list,M.profiles,"all-resolutions-"+(active==="all"?"all":active));};
-function setSelMode(on){selMode=on;grid.classList.toggle("selmode",on);selbar.hidden=!on;selBtn.textContent=on?"Exit select":"Select";}
+function setSelMode(on){selMode=on;grid.classList.toggle("selmode",on);selbar.hidden=!on;selBtn.textContent=on?"Exit select":"Select";selBtn.setAttribute("aria-pressed",String(on));}
 selBtn.onclick=function(){setSelMode(!selMode);};
-document.getElementById("selDone").onclick=function(){setSelMode(false);};
-document.getElementById("selClear").onclick=function(){selected={};[].forEach.call(grid.querySelectorAll(".card.sel"),function(c){c.classList.remove("sel");});updateSel();};
-document.getElementById("dlSel").onclick=function(){var list=M.designs.filter(function(d){return selected[d.id];});if(!list.length){alert("Tap wallpapers to tick the ones you want, then Download selection.");return;}if(list.length>40&&!confirm("Download "+list.length+" selected wallpapers for "+curDev().n+"?"))return;zipFetch(list,[curProf()],"selection-"+devSlug());};
+document.getElementById("selDone").onclick=function(){setSelMode(false);selBtn.focus();};
+document.getElementById("selClear").onclick=function(){selected={};[].forEach.call(grid.querySelectorAll(".card.sel"),function(c){c.classList.remove("sel");c.querySelector("input[type=checkbox]").checked=false;});updateSel();};
+document.getElementById("dlSel").onclick=function(){var list=M.designs.filter(function(d){return selected[d.id];});if(!list.length){alert("Use the Select checkboxes to choose wallpapers, then Download selection.");return;}if(list.length>40&&!confirm("Download "+list.length+" selected wallpapers for "+curDev().n+"?"))return;zipFetch(list,[curProf()],"selection-"+devSlug());};
 document.addEventListener("click",function(e){if(dlMenu.open&&!dlMenu.contains(e.target))dlMenu.open=false;});
 setDeviceNote();updateDlLabels();render();
 </script>

@@ -110,4 +110,7 @@ section{padding:clamp(40px,6vw,76px) 0}
 footer{border-top:1px solid var(--line);padding:40px 0 56px;font-family:var(--f-mono);font-size:13px;color:var(--mut);margin-top:30px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
 footer a:hover{color:var(--ink)}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+:where(a,button,input,select):focus-visible{outline:3px solid var(--indigo);outline-offset:4px}
+[id]{scroll-margin-top:84px}
