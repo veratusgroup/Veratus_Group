@@ -1,7 +1,7 @@
 
-# Wallpaper image sets live on cPanel + the Wallpapers LFS repo, never here
+# Full-resolution wallpaper exports remain on cPanel and the Wallpapers LFS repo
 wallpapers/Exports/
-wallpapers/Previews/
+# Public gallery thumbnails are source assets; full-resolution exports stay hosted.
 
 # Separate repos of their own, not part of the websites repo
 Iru Accepts Vuln/

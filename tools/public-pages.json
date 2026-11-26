@@ -1,0 +1,45 @@
+{
+  "site": "group",
+  "pages": [
+    {
+      "path": "about.html",
+      "mode": "page"
+    },
+    {
+      "path": "contact.html",
+      "mode": "page"
+    },
+    {
+      "path": "games.html",
+      "mode": "page"
+    },
+    {
+      "path": "index.html",
+      "mode": "page"
+    },
+    {
+      "path": "olympus.html",
+      "mode": "page"
+    },
+    {
+      "path": "privacy.html",
+      "mode": "page"
+    },
+    {
+      "path": "refunds.html",
+      "mode": "page"
+    },
+    {
+      "path": "subsidiaries.html",
+      "mode": "page"
+    },
+    {
+      "path": "terms.html",
+      "mode": "page"
+    },
+    {
+      "path": "wallpapers/index.html",
+      "mode": "page"
+    }
+  ]
+}

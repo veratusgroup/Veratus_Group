@@ -1,0 +1,15 @@
+/* Inherited policy content is preserved; shell matches Group Boot. */
+.legacy-policy{max-width:100%;color:var(--ink)}
+.legacy-policy .bhead{padding:clamp(40px,6vw,72px) 0 32px;border-bottom:1px solid var(--line)}
+.legacy-policy .bcrumbs{font:500 13px/1.5 var(--f-mono);color:var(--indigo)}
+.legacy-policy h1,.legacy-policy h2,.legacy-policy h3{font-family:var(--f-disp);color:var(--ink);letter-spacing:-.025em}
+.legacy-policy h1{max-width:900px;font-size:clamp(38px,5vw,64px)!important;line-height:1.05}
+.legacy-policy .updated{color:var(--ink2);font:400 14px/1.6 var(--f-mono)}
+.legacy-policy .disclaimer{max-width:840px;background:#fff6d5;border:1px solid #ccab48;border-radius:12px;padding:18px;color:#493b0c;font:400 16px/1.7 var(--f-body)}
+.legacy-policy .sec{padding:34px 0}
+.legacy-policy .legal{max-width:820px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(22px,4vw,42px)}
+.legacy-policy .legal h2{font-size:clamp(22px,2.6vw,29px);margin:32px 0 12px}
+.legacy-policy .legal h3{font-size:20px;margin:24px 0 10px}
+.legacy-policy .legal p,.legacy-policy .legal li{font:400 17px/1.75 var(--f-body);color:var(--ink2)}
+.legacy-policy .legal a{text-decoration:underline;text-underline-offset:4px;color:var(--indigo);overflow-wrap:anywhere}
+.legacy-policy .legal ul{padding-left:24px}.legacy-policy .legal li{margin:8px 0}

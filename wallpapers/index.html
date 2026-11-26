@@ -3,114 +3,48 @@
 <title>Wallpapers — Veratus Group</title>
 <meta name="description" content="Free Veratus Group wallpapers — original brand designs and game spotlights, sized for your exact phone, tablet, laptop or monitor.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-<style>
-:root{color-scheme:dark;--ink:#0A0B0D;--ink1:#0F1116;--ink2:#15181E;--ink3:#1E222A;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--fg:#F4F5F1;--fg2:#9DA2AB;--fg3:#686D76;--accent:#4B4DF2;--bright:#7378FF;--dim:rgba(75,77,242,.16);--aline:rgba(115,120,255,.42)}
-*{box-sizing:border-box}body{margin:0;background:var(--ink);color:var(--fg);font-family:'Inter',system-ui,sans-serif}
-a{color:inherit}
-.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
-header.nav{position:sticky;top:0;z-index:40;background:rgba(10,11,13,.72);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.nav .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.navlinks{display:flex;gap:22px;align-items:center}
-.navlink{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.06em;color:var(--fg2);text-decoration:none}
-.navlink:hover{color:var(--fg)}
-.hero{padding:clamp(44px,6vw,84px) 0 20px}
-.eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--bright);margin:0 0 16px}
-h1{font-family:'Archivo';font-weight:800;font-size:clamp(34px,5.4vw,70px);letter-spacing:-.03em;line-height:1.02;margin:0}
-.lede{margin:20px 0 0;font-size:clamp(16px,1.7vw,19px);line-height:1.55;color:var(--fg2);max-width:60ch}
-.device{margin-top:26px;display:inline-flex;align-items:center;gap:12px;padding:12px 18px;border:1px solid var(--aline);border-radius:999px;background:var(--dim);font-size:14px}
-.device b{color:var(--bright)}.device .dot{width:8px;height:8px;border-radius:50%;background:var(--bright);box-shadow:0 0 10px var(--bright)}
-.bar{position:sticky;top:72px;z-index:30;background:rgba(10,11,13,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 0}
-.bar .wrap{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.chip{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg2);padding:9px 15px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03);cursor:pointer;white-space:nowrap;transition:.16s}
-.chip:hover{color:var(--fg);border-color:var(--line2)}
-.chip.on{color:#fff;background:var(--accent);border-color:var(--accent);font-weight:600}
-.count{margin-left:auto;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3)}
-main{padding:30px 0 90px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--ink2);transition:transform .2s,border-color .2s,box-shadow .2s}
-.card:hover{transform:translateY(-4px);border-color:var(--aline);box-shadow:0 26px 54px -26px #000}
-.card .thumb{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--ink1)}
-.card .meta{padding:14px 15px}
-.card .k{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bright)}
-.card .nm{font-family:'Archivo';font-weight:700;font-size:16px;margin-top:5px;letter-spacing:-.01em}
-dialog{border:none;padding:0;background:transparent;max-width:100vw;max-height:100vh}
-dialog::backdrop{background:rgba(5,6,10,.86);backdrop-filter:blur(6px)}
-.lb{width:min(1100px,94vw);max-height:92vh;overflow:auto;background:var(--ink1);border:1px solid var(--line);border-radius:18px}
-.lb .pv{width:100%;max-height:58vh;object-fit:contain;display:block;background:#05060a;border-bottom:1px solid var(--line)}
-.lb .body{padding:22px clamp(18px,3vw,30px)}
-.lb .k{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--bright)}
-.lb h2{font-family:'Archivo';font-weight:800;font-size:clamp(22px,3vw,34px);letter-spacing:-.02em;margin:7px 0 6px}
-.lb .vn{color:var(--fg2);font-size:14.5px;line-height:1.5;max-width:60ch}
-.pick{margin-top:22px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;max-width:640px}
-.fld label{display:block;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg3);margin-bottom:7px}
-select{width:100%;font:inherit;font-size:15px;color:var(--fg);background:var(--ink3);border:1px solid var(--line);border-radius:12px;padding:14px 15px}
-.dl{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:'Archivo';font-weight:700;font-size:15px;color:#fff;background:var(--accent);padding:11px 24px;border-radius:12px;border:none;cursor:pointer;box-shadow:0 14px 34px -14px rgba(75,77,242,.7);white-space:nowrap}
-.dl:hover{background:var(--bright)}.dl small{font-weight:500;opacity:.78;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.04em}
-.hint{margin:14px 0 0;color:var(--fg3);font-size:12.5px;line-height:1.5}
-.close{position:absolute;right:16px;top:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(15,17,22,.8);color:#fff;font-size:20px;cursor:pointer}
-footer{border-top:1px solid var(--line);padding:30px 0;color:var(--fg3);font-size:12px}
-@media(max-width:600px){.grid{grid-template-columns:1fr 1fr;gap:12px}.card .meta{padding:10px}.card .nm{font-size:14px}.pick{grid-template-columns:1fr}.navlinks{gap:14px}}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets-v2/site.css">
+<link rel="stylesheet" href="../assets-v2/wallpapers.css"><link rel="stylesheet" href="../assets-v2/site-shell.css">
+</head>
+<body class="wallpapers-page">
+<!-- VERATUS:SITE-HEADER -->
+<a class="site-skip" href="#main">Skip to content</a>
+<nav class="bar site-header" aria-label="Primary"><div class="wrap shell-frame">
+<a class="brand" href="../index.html" aria-label="Veratus Group home"><span class="dot" aria-hidden="true"></span>veratus<span class="brand-prompt" aria-hidden="true">:~$</span></a>
+<div class="nav-links shell-desktop"><a href="../about.html">About</a>
+<a href="../subsidiaries.html">The group</a>
+<a href="../olympus.html">Games</a>
+<a href="../wallpapers/" aria-current="page">Wallpapers</a>
+<a href="../contact.html">Contact</a><a class="btn lime cta shell-cta" href="../index.html#build">Start a build</a></div>
+<details class="site-menu"><summary>Menu</summary><div class="shell-mobile-links"><a href="../about.html">About</a>
+<a href="../subsidiaries.html">The group</a>
+<a href="../olympus.html">Games</a>
+<a href="../wallpapers/" aria-current="page">Wallpapers</a>
+<a href="../contact.html">Contact</a><a class="btn lime cta shell-cta" href="../index.html#build">Start a build</a></div></details>
+</div></nav>
 
-.wtoolbar{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
-.wtool{display:inline-flex;flex-direction:column;gap:4px}
-.wtool-k{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#9DA2AB}
-.wsel{font:inherit;font-size:13px;font-weight:600;color:#F4F5F1;background:#1E222A;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 12px;max-width:230px;cursor:pointer}
-.wbtn{font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#4B4DF2;border:none;border-radius:10px;padding:10px 16px;cursor:pointer;white-space:nowrap}
-.wbtn:hover{background:#7378FF}
-.wbtn[disabled]{opacity:.55;cursor:default}
-.wbtn-ghost{color:#F4F5F1;background:#1E222A;border:1px solid rgba(255,255,255,.1)}
-.wbtn-ghost:hover{background:#1E222A;border-color:#4B4DF2}
-.wmenu{position:relative}
-.wmenu>summary{list-style:none;cursor:pointer;display:inline-flex}
-.wmenu>summary::-webkit-details-marker{display:none}
-.wmenu[open]>summary{background:#7378FF}
-.wmenu-pop{position:absolute;z-index:25;top:calc(100% + 6px);left:0;min-width:250px;background:#15181E;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:6px;box-shadow:0 22px 54px -20px #000}
-.wmenu-item{display:block;width:100%;text-align:left;font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;color:#F4F5F1;background:none;border:none;border-radius:8px;padding:10px 12px;cursor:pointer}
-.wmenu-item:hover{background:#1E222A}
-.wmenu-item small{display:block;font-family:'Inter',sans-serif;font-weight:400;color:#9DA2AB;font-size:11px;margin-top:2px}
-.wtbar-right{margin-left:auto;display:flex;gap:12px;align-items:center}
-.wcount{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9DA2AB;white-space:nowrap}
-.wstatus{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7378FF;white-space:nowrap}
-.selbar{display:flex;gap:10px;align-items:center;flex-basis:100%;margin-top:4px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1)}
-.selbar .wcount{color:#F4F5F1}
-.selbar[hidden]{display:none}
-.card{position:relative}
-.card-preview{display:block;width:100%;padding:0;border:0;border-radius:inherit;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
-.card .meta,.card .k,.card .nm{display:block}
-.card-select{position:absolute;top:10px;left:10px;z-index:3;display:none;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.65);background:rgba(0,0,0,.82);color:#fff;font-size:14px;font-weight:600;cursor:pointer}
-.card-select input{width:22px;height:22px;margin:0;accent-color:#4B4DF2;cursor:pointer}
-.grid.selmode .card-select{display:flex}
-.card.sel{border-color:#7378FF}
-.card.sel .card-select{background:#4B4DF2;border-color:#4B4DF2;color:#fff}
-:is(a,button,input,select,summary):focus-visible{outline:3px solid #7378FF;outline-offset:3px}
-.card-preview:focus-visible{outline-offset:-4px}
-.card-select input:focus-visible{outline-color:#fff;outline-offset:3px}
-@media(max-width:620px){.wtbar-right{margin-left:0;width:100%;justify-content:space-between}.wtool{flex:1 1 44%}.wsel{max-width:none;width:100%}.wmenu-pop{right:0;left:auto}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto!important}.card:hover{transform:none}}
-</style></head>
-<body>
-<header class="nav"><div class="wrap"><a class="brand" href="../index.html" aria-label="Veratus Group home" style="display:inline-flex;align-items:center;gap:11px;text-decoration:none">
-  <svg viewBox="0 0 64 64" fill="none" style="width:26px;height:26px"><rect x="6" y="38" width="17" height="17" rx="3.5" fill="#3A3CE0"/><rect x="40.5" y="9" width="17" height="17" rx="3.5" fill="#7378FF"/><rect x="23" y="23.5" width="17" height="17" rx="3.5" fill="#4B4DF2"/></svg>
-  <span style="font-family:'Archivo';font-weight:800;letter-spacing:.02em;font-size:17px">VERATUS<b style="color:#7378FF">.</b></span></a>
-<nav class="navlinks"><a class="navlink" href="../index.html">Home</a><a class="navlink" href="../subsidiaries.html">Subsidiaries</a><a class="navlink" href="../about.html">About</a><a class="navlink" href="../contact.html">Contact</a></nav></div></header>
-<section class="hero"><div class="wrap">
-  <p class="eyebrow">◆ Free wallpapers</p>
+<!-- /VERATUS:SITE-HEADER -->
+<section class="wp-hero"><div class="wrap">
+  <p class="wp-eyebrow">◆ Free wallpapers</p>
   <h1>Our world,<br>on your screen.</h1>
-  <p class="lede">Twenty-five original designs from across Veratus Group &mdash; our own abstract series and spotlights from the studio. Pick one, choose your device by name, and we hand you the perfect fit.</p>
-  <div class="device" id="device"><span class="dot"></span><span id="deviceNote">Finding your screen&hellip;</span></div>
+  <p class="wp-lede">Twenty-five original designs from across Veratus Group &mdash; our own abstract series and spotlights from the studio. Pick one, choose your device by name, and we hand you the perfect fit.</p>
+  <div class="wp-device" id="device"><span class="wp-device-dot"></span><span id="deviceNote">Finding your screen&hellip;</span></div>
 </div></section>
-<section class="bar"><div class="wrap wtoolbar"><label class="wtool"><span class="wtool-k">Device</span><select id="allDev" class="wsel"></select></label><label class="wtool"><span class="wtool-k">Show</span><select id="gameSel" class="wsel"></select></label><div class="wtool"><span class="wtool-k">&nbsp;</span><details class="wmenu" id="dlMenu"><summary class="wbtn">&#8595; Download</summary><div class="wmenu-pop"><button class="wmenu-item" id="dlDevice">Download all for my device<small id="dlDeviceSub"></small></button><button class="wmenu-item" id="dlAllRes">Download all resolutions<small>Every size of what’s shown — large</small></button></div></details></div><div class="wtool"><span class="wtool-k">&nbsp;</span><button class="wbtn wbtn-ghost" id="selBtn" aria-pressed="false" aria-controls="grid">Select</button></div><div class="wtbar-right"><span class="wstatus" id="wstatus" role="status" aria-live="polite"></span><span class="wcount" id="wcount"></span></div><div class="selbar" id="selbar" hidden><span class="wcount" id="selInfo" role="status" aria-live="polite">0 selected</span><button class="wbtn" id="dlSel">&#8595; Download selection</button><button class="wbtn wbtn-ghost" id="selClear">Clear</button><button class="wbtn wbtn-ghost" id="selDone">Done</button></div></div></section>
-<main><div class="wrap"><div class="grid" id="grid"></div></div></main>
-<footer><div class="wrap">Veratus Group · Wallpapers are free for personal use. Pick the device closest to yours — your screen scales art to fit.</div></footer>
-<dialog id="lb" aria-labelledby="lbName" aria-describedby="lbVar"><div class="lb" style="position:relative"><button class="close" id="lbClose" aria-label="Close wallpaper preview" autofocus>&times;</button>
-  <img class="pv" id="lbImg" alt="">
-  <div class="body"><div class="k" id="lbGame"></div><h2 id="lbName"></h2><div class="vn" id="lbVar"></div>
-    <div class="pick">
-      <div class="fld"><label for="lbDev">Your device</label><select id="lbDev"></select></div>
-      <button class="dl" id="lbDl"><span>&#8595; Download</span><small id="lbDlSub"></small></button>
+<section class="wp-toolbar"><div class="wrap wp-toolbar-inner"><label class="wp-tool"><span class="wp-tool-key">Device</span><select id="allDev" class="wp-select"></select></label><label class="wp-tool"><span class="wp-tool-key">Show</span><select id="gameSel" class="wp-select"></select></label><div class="wp-tool"><span class="wp-tool-key">&nbsp;</span><details class="wp-menu" id="dlMenu"><summary class="wp-button">Download</summary><div class="wp-menu-pop"><button class="wp-menu-item" id="dlDevice">Download all for my device<small id="dlDeviceSub"></small></button><button class="wp-menu-item" id="dlAllRes">Download all resolutions<small>Every size of what’s shown — large</small></button></div></details></div><div class="wp-tool"><span class="wp-tool-key">&nbsp;</span><button class="wp-button wp-button--secondary" id="selBtn" aria-pressed="false" aria-controls="grid">Select</button></div><div class="wp-toolbar-right"><span class="wp-status" id="wstatus" role="status" aria-live="polite"></span><span class="wp-count" id="wcount"></span></div><div class="wp-selection" id="selbar" hidden><span class="wp-count" id="selInfo" role="status" aria-live="polite">0 selected</span><button class="wp-button" id="dlSel">Download selection</button><button class="wp-button wp-button--secondary" id="selClear">Clear</button><button class="wp-button wp-button--secondary" id="selDone">Done</button></div></div></section>
+<main class="wp-main" id="main"><div class="wrap"><div class="wp-grid" id="grid"></div><p class="wp-license">Veratus Group · Wallpapers are free for personal use. Pick the device closest to yours — your screen scales art to fit.</p></div></main>
+<!-- VERATUS:SITE-FOOTER -->
+<footer class="site-footer"><div class="wrap shell-footer"><div class="shell-footer-brand"><p>© 2026 Veratus Group Limited · No. 17258282</p><a href="mailto:hello@veratusgroup.com">hello@veratusgroup.com</a></div><nav class="shell-footer-links" aria-label="Footer"><a href="../about.html">About</a><a href="../subsidiaries.html">The group</a><a href="../olympus.html">Games</a><a href="../wallpapers/" aria-current="page">Wallpapers</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><a href="../refunds.html">Refunds</a><a href="https://filecura.com">FileCura</a><a href="https://reflowroom.com">Reflow</a><a href="https://veratusgroup.com">Veratus Group</a><a href="https://veratusgames.com">Veratus Games</a><a href="https://veratusconsulting.com">Veratus Consulting</a></nav></div></footer>
+
+<!-- /VERATUS:SITE-FOOTER -->
+<dialog class="wp-dialog" id="lb" aria-labelledby="lbName" aria-describedby="lbVar"><div class="wp-lightbox"><button class="wp-close" id="lbClose" aria-label="Close wallpaper preview" autofocus>&times;</button>
+  <img class="wp-preview-image" id="lbImg" alt="">
+  <div class="wp-dialog-body"><div class="wp-category" id="lbGame"></div><h2 id="lbName"></h2><div class="wp-description" id="lbVar"></div>
+    <div class="wp-pick">
+      <div class="wp-field"><label for="lbDev">Your device</label><select id="lbDev"></select></div>
+      <button class="wp-download" id="lbDl"><span>Download</span><small id="lbDlSub"></small></button>
     </div>
-    <p class="hint">Preset to the closest match for your screen. Don&rsquo;t see yours? Any size nearby works &mdash; phones, tablets, laptops and monitors are all covered.</p>
+    <p class="wp-hint">Preset to the closest match for your screen. Don&rsquo;t see yours? Any size nearby works &mdash; phones, tablets, laptops and monitors are all covered.</p>
   </div>
 </div></dialog>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -159,15 +93,15 @@ function render(){
  var list=filtered();wcount.textContent=list.length+" designs";grid.innerHTML="";
  list.forEach(function(d){
   var title=(d.v||d.t),category=catLabel(d[CK]);
-  var c=document.createElement("article");c.className="card"+(selected[d.id]?" sel":"");
-  var preview=document.createElement("button");preview.type="button";preview.className="card-preview";preview.dataset.designId=d.id;
+  var c=document.createElement("article");c.className="wp-card"+(selected[d.id]?" sel":"");
+  var preview=document.createElement("button");preview.type="button";preview.className="wp-preview";preview.dataset.designId=d.id;
   preview.setAttribute("aria-label","Preview "+title+" — "+category);preview.setAttribute("aria-haspopup","dialog");preview.setAttribute("aria-controls","lb");
-  var image=document.createElement("img");image.className="thumb";image.loading="lazy";image.src=thumb(d);image.alt="";preview.appendChild(image);
-  var meta=document.createElement("span");meta.className="meta";
-  [["k",category],["nm",title]].forEach(function(item){var text=document.createElement("span");text.className=item[0];text.textContent=item[1];meta.appendChild(text);});
-  if(d.o){var original=document.createElement("span");original.className="og";original.textContent="Approved original";meta.appendChild(original);}
+  var image=document.createElement("img");image.className="wp-thumb";image.loading="lazy";image.src=thumb(d);image.alt="";preview.appendChild(image);
+  var meta=document.createElement("span");meta.className="wp-meta";
+  [["wp-category",category],["wp-name",title]].forEach(function(item){var text=document.createElement("span");text.className=item[0];text.textContent=item[1];meta.appendChild(text);});
+  if(d.o){var original=document.createElement("span");original.className="wp-original";original.textContent="Approved original";meta.appendChild(original);}
   preview.appendChild(meta);preview.onclick=function(){openLb(d,preview);};c.appendChild(preview);
-  var choice=document.createElement("label");choice.className="card-select";
+  var choice=document.createElement("label");choice.className="wp-choice";
   var checkbox=document.createElement("input");checkbox.type="checkbox";checkbox.checked=!!selected[d.id];checkbox.setAttribute("aria-label","Select "+title+" — "+category);
   checkbox.onchange=function(){if(checkbox.checked)selected[d.id]=1;else delete selected[d.id];c.classList.toggle("sel",checkbox.checked);updateSel();};
   var caption=document.createElement("span");caption.textContent="Select";caption.setAttribute("aria-hidden","true");choice.appendChild(checkbox);choice.appendChild(caption);c.appendChild(choice);grid.appendChild(c);
@@ -188,7 +122,7 @@ lb.addEventListener("keydown",function(e){
 });
 lb.addEventListener("close",function(){
  var target=lbOpener;
- if(!visibleControl(target)){target=[].filter.call(grid.querySelectorAll(".card-preview"),function(el){return el.dataset.designId===lbDesignId&&visibleControl(el);})[0];}
+ if(!visibleControl(target)){target=[].filter.call(grid.querySelectorAll(".wp-preview"),function(el){return el.dataset.designId===lbDesignId&&visibleControl(el);})[0];}
  (target||gameSel).focus({preventScroll:true});lbOpener=null;lbDesignId=null;
 });
 document.getElementById("lbClose").onclick=function(){lb.close();};
@@ -206,7 +140,7 @@ document.getElementById("dlAllRes").onclick=function(){dlMenu.open=false;var lis
 function setSelMode(on){selMode=on;grid.classList.toggle("selmode",on);selbar.hidden=!on;selBtn.textContent=on?"Exit select":"Select";selBtn.setAttribute("aria-pressed",String(on));}
 selBtn.onclick=function(){setSelMode(!selMode);};
 document.getElementById("selDone").onclick=function(){setSelMode(false);selBtn.focus();};
-document.getElementById("selClear").onclick=function(){selected={};[].forEach.call(grid.querySelectorAll(".card.sel"),function(c){c.classList.remove("sel");c.querySelector("input[type=checkbox]").checked=false;});updateSel();};
+document.getElementById("selClear").onclick=function(){selected={};[].forEach.call(grid.querySelectorAll(".wp-card.sel"),function(c){c.classList.remove("sel");c.querySelector("input[type=checkbox]").checked=false;});updateSel();};
 document.getElementById("dlSel").onclick=function(){var list=M.designs.filter(function(d){return selected[d.id];});if(!list.length){alert("Use the Select checkboxes to choose wallpapers, then Download selection.");return;}if(list.length>40&&!confirm("Download "+list.length+" selected wallpapers for "+curDev().n+"?"))return;zipFetch(list,[curProf()],"selection-"+devSlug());};
 document.addEventListener("click",function(e){if(dlMenu.open&&!dlMenu.contains(e.target))dlMenu.open=false;});
 setDeviceNote();updateDlLabels();render();

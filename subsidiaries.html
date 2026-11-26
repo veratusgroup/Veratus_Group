@@ -8,20 +8,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="assets-v2/site.css">
+<link rel="stylesheet" href="assets-v2/site-shell.css">
 </head>
 <body>
 
-<nav class="bar"><div class="wrap">
-  <a class="brand" href="index.html"><span class="dot"></span>veratus<span style="color:var(--mut)">:~$</span></a>
-  <div class="nav-links">
-    <a href="subsidiaries.html" class="here">./divisions</a>
-    <a href="about.html">./about</a>
-    <a href="contact.html">./contact</a>
-    <a class="btn lime cta" href="https://veratusconsulting.com" style="padding:9px 15px">Start a build</a>
-  </div>
+<!-- VERATUS:SITE-HEADER -->
+<a class="site-skip" href="#main">Skip to content</a>
+<nav class="bar site-header" aria-label="Primary"><div class="wrap shell-frame">
+<a class="brand" href="index.html" aria-label="Veratus Group home"><span class="dot" aria-hidden="true"></span>veratus<span class="brand-prompt" aria-hidden="true">:~$</span></a>
+<div class="nav-links shell-desktop"><a href="about.html">About</a>
+<a href="subsidiaries.html" aria-current="page">The group</a>
+<a href="olympus.html">Games</a>
+<a href="wallpapers/">Wallpapers</a>
+<a href="contact.html">Contact</a><a class="btn lime cta shell-cta" href="index.html#build">Start a build</a></div>
+<details class="site-menu"><summary>Menu</summary><div class="shell-mobile-links"><a href="about.html">About</a>
+<a href="subsidiaries.html" aria-current="page">The group</a>
+<a href="olympus.html">Games</a>
+<a href="wallpapers/">Wallpapers</a>
+<a href="contact.html">Contact</a><a class="btn lime cta shell-cta" href="index.html#build">Start a build</a></div></details>
 </div></nav>
 
-<main>
+<!-- /VERATUS:SITE-HEADER -->
+
+<main id="main">
 <header class="phero"><div class="wrap">
   <div class="crumb"><a href="index.html">veratus:~$</a> / divisions</div>
   <span class="kicker">● four divisions · one standard</span>
@@ -76,9 +85,9 @@
 </div></section>
 </main>
 
-<footer><div class="wrap">
-  <span>© 2026 Veratus Group Limited · No. 17258282</span>
-  <span>FileCura · Veratus Games · Veratus Consulting · Reflow</span>
-</div></footer>
+<!-- VERATUS:SITE-FOOTER -->
+<footer class="site-footer"><div class="wrap shell-footer"><div class="shell-footer-brand"><p>© 2026 Veratus Group Limited · No. 17258282</p><a href="mailto:hello@veratusgroup.com">hello@veratusgroup.com</a></div><nav class="shell-footer-links" aria-label="Footer"><a href="about.html">About</a><a href="subsidiaries.html" aria-current="page">The group</a><a href="olympus.html">Games</a><a href="wallpapers/">Wallpapers</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refunds.html">Refunds</a><a href="https://filecura.com">FileCura</a><a href="https://reflowroom.com">Reflow</a><a href="https://veratusgroup.com">Veratus Group</a><a href="https://veratusgames.com">Veratus Games</a><a href="https://veratusconsulting.com">Veratus Consulting</a></nav></div></footer>
+
+<!-- /VERATUS:SITE-FOOTER -->
 </body>
 </html>
